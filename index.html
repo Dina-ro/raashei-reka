@@ -78,15 +78,26 @@
           </div>
         </div>
 
-        <!-- האיור: "רעש" של התראות שמתנקה לזמן שקט. רק עיצוב, בלי טקסט חשוב -->
+        <!-- האיור: טלפון שמקבל רצף הודעות, ואז הכול מתנקה ונשאר זמן לעצמך.
+             ההודעות עצמן כתובות בקובץ script.js, ברשימה MESSAGES -->
         <div class="hero__visual" aria-hidden="true">
-          <div class="noise">
-            <div class="chip chip--fade4"><b>קבוצת הגן</b><span>112</span></div>
-            <div class="chip chip--fade3"><b>ועד הבית</b><span>38</span></div>
-            <div class="chip chip--fade2"><b>לקוחה · "רק שאלה קטנה..."</b><span>4</span></div>
-            <div class="chip chip--fade1"><b>מייל · חשבונית לא שולמה</b><span>!</span></div>
-            <div class="chip chip--fade0"><b>תזכורת · תור לרופא שיניים</b><span>?</span></div>
-            <div class="chip chip--calm"><b>✓ זמן לעצמי</b><span>20:00</span></div>
+          <div class="phone">
+            <div class="phone__status"><span>09:41</span><span class="phone__notch"></span><span class="phone__bars"><i></i><i></i><i></i></span></div>
+            <div class="phone__head">
+              <span>הודעות</span>
+              <span class="phone__count" id="notifCount">23</span>
+            </div>
+            <div class="feed" id="feed">
+              <!-- תוכן קבוע למקרה שהאנימציה כבויה. הסקריפט מחליף אותו -->
+              <div class="msg is-in"><span class="msg__av">ג</span><span class="msg__body"><b>קבוצת הגן</b><span>מי מביאה מחר עוגה? 🎂</span></span><span class="msg__meta"><small>עכשיו</small><em>112</em></span></div>
+              <div class="msg is-in"><span class="msg__av msg__av--b">ל</span><span class="msg__body"><b>לקוחה</b><span>רק שאלה קטנה...</span></span><span class="msg__meta"><small>עכשיו</small><em>4</em></span></div>
+              <div class="msg is-in"><span class="msg__av msg__av--c">@</span><span class="msg__body"><b>מייל</b><span>חשבונית לא שולמה</span></span><span class="msg__meta"><small>עכשיו</small><em>!</em></span></div>
+              <div class="msg is-in"><span class="msg__av">ו</span><span class="msg__body"><b>ועד הבית</b><span>תזכורת: תשלום חודשי</span></span><span class="msg__meta"><small>עכשיו</small><em>38</em></span></div>
+            </div>
+            <div class="calm" id="calm">
+              <span class="calm__check">✓</span>
+              <span class="calm__text"><b>זמן לעצמי</b><span>20:00 · שקט. רק את.</span></span>
+            </div>
           </div>
         </div>
       </div>
@@ -168,7 +179,7 @@
             </li>
           </ol>
 
-          <!-- מה כלול + למי זה -->
+          <!-- מה כלול + לאן זה לוקח -->
           <div class="offer__side">
             <div class="box box--pink">
               <h3>מה מקבלים</h3>
@@ -180,10 +191,6 @@
                 <li>תשלום בדאנה בביט: כמה שאת רוצה ויכולה</li>
               </ul>
             </div>
-            <div class="box">
-              <h3>בשביל מי זה</h3>
-              <p>לנשים. אמהות, עצמאיות, בעלות עסק ושכירות. לכל מי שמרגישה שהיא מחזיקה יותר מדי כדורים באוויר.</p>
-            </div>
             <div class="box box--ink">
               <h3>לאן זה לוקח אותך</h3>
               <p>פחות הצפה. פחות משימות שנופלות בין הכיסאות. יותר בחירה מודעת: את מחליטה לאן הולכת תשומת הלב שלך.</p>
@@ -193,7 +200,66 @@
       </div>
     </section>
 
-    <!-- ===================== 4. עליי ===================== -->
+    <!-- ===================== 4. למי זה מתאים ===================== -->
+    <section class="section who" id="who">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">למי זה מתאים</p>
+          <h2>האתגר הזה בשבילך, אם...</h2>
+          <p class="section__sub">
+            הוא נבנה לנשים. אמהות, עצמאיות, בעלות עסק ושכירות.
+            לכל מי שמרגישה שהיא מחזיקה יותר מדי כדורים באוויר, ושהטלפון מחזיק אותה ולא להפך.
+          </p>
+        </div>
+
+        <!-- הכרטיסים: לשינוי, מחליפות את הכותרת והמשפט בכל כרטיס -->
+        <div class="who__grid">
+          <article class="who-card">
+            <span class="who-card__tag">אמא</span>
+            <h3>את זוכרת הכול. של כולם.</h3>
+            <p>תורים, חוגים, קניות, מי צריך מה ומתי. הראש שלך הוא היומן המשפחתי, והוא לא נסגר אף פעם.</p>
+          </article>
+          <article class="who-card">
+            <span class="who-card__tag">עצמאית ובעלת עסק</span>
+            <h3>העסק והבית באותו טלפון</h3>
+            <p>הודעה מלקוחה באמצע ארוחת ערב, קבוצת הגן באמצע פגישה. אין שעה שבה את באמת סוגרת את הדלת.</p>
+          </article>
+          <article class="who-card">
+            <span class="who-card__tag">שכירה</span>
+            <h3>יום עבודה, ואז משמרת שנייה</h3>
+            <p>את חוזרת הביתה ומתחיל עוד יום, והטלפון ממשיך לזמזם בשתי המשמרות.</p>
+          </article>
+          <article class="who-card">
+            <span class="who-card__tag">מחזיקה הכול בראש</span>
+            <h3>"אל תשכחי ש..."</h3>
+            <p>רשימות על פתקים, תזכורות בהודעות לעצמך, משימות שקופצות בלילה. הכול אצלך, ואין לזה מקום אחד.</p>
+          </article>
+          <article class="who-card">
+            <span class="who-card__tag">כבר ניסתה</span>
+            <h3>הורדת, התחלת, נטשת</h3>
+            <p>עוד אפליקציה, עוד שיטה. את לא צריכה עוד כלי, את צריכה דרך פשוטה שבאמת מחזיקה ביום יום.</p>
+          </article>
+          <article class="who-card who-card--pink">
+            <span class="who-card__tag">רוצה קצת שקט</span>
+            <h3>מתגעגעת לזמן שהוא רק שלך</h3>
+            <p>שעה ביום שבה אף אחד לא צריך ממך כלום. היא אפשרית, וגם מגיעה לך.</p>
+          </article>
+        </div>
+
+        <!-- הפס התחתון: מה לא צריך כדי להצטרף -->
+        <div class="who__note">
+          <p class="who__note-title">ולא צריך:</p>
+          <ul class="who__pills">
+            <li>ידע טכני</li>
+            <li>להיות מסודרת מראש</li>
+            <li>לפנות שבוע שלם</li>
+          </ul>
+          <p class="who__note-end">רק בערך שעה ביום, והרצון שיהיה קצת יותר שקט.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 5. עליי ===================== -->
     <section class="section about" id="about">
       <div class="container about__grid">
         <figure class="about__photo">
@@ -223,7 +289,7 @@
       </div>
     </section>
 
-    <!-- ===================== 5. למה זה עובד ===================== -->
+    <!-- ===================== 6. למה זה עובד ===================== -->
     <section class="section benefits" id="benefits">
       <div class="container">
         <div class="section__head">
@@ -255,7 +321,7 @@
       </div>
     </section>
 
-    <!-- ===================== 6. שאלות נפוצות ===================== -->
+    <!-- ===================== 7. שאלות נפוצות ===================== -->
     <section class="section faq" id="faq">
       <div class="container faq__inner">
         <div class="section__head">
@@ -288,7 +354,7 @@
       </div>
     </section>
 
-    <!-- ===================== 7. הזמנה אחרונה ===================== -->
+    <!-- ===================== 8. הזמנה אחרונה ===================== -->
     <section class="final" id="join">
       <div class="container final__inner">
         <p class="eyebrow eyebrow--light">רעשי רקע · PINK MONEY CLUB</p>
