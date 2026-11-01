@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  רעשי רקע · דף נחיתה
+  ------------------------------------------------------------
+  מבנה הקבצים:
+    index.html        ← הקובץ הזה: כל הטקסטים והמבנה של הדף
+    style.css         ← העיצוב: צבעים, גופנים, ריווחים
+    script.js         ← התנהגות: קישור הוואטסאפ, כפתור צף בנייד
+    assets/about-photo.jpg  ← התמונה שלך (להחליף באותו שם קובץ)
+
+  רוצה לשנות טקסט? פשוט מחפשים אותו כאן ומחליפים.
+  רוצה לשנות את מספר הוואטסאפ? זה בקובץ script.js, בשורה אחת.
+  ============================================================
+-->
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- כותרת הדף (מופיעה בלשונית הדפדפן) -->
+  <title>רעשי רקע · להחזיר לעצמך את השליטה</title>
+
+  <!-- התיאור שמופיע כשמשתפים את הקישור בוואטסאפ -->
+  <meta name="description" content="תהליך של 5 צעדים לנשים עמוסות: מפרקות את הוואטסאפ והמייל, מסדרות כלי לניהול משימות ומעגנות זמן לעצמך ביומן. אתגר של PINK MONEY CLUB, בתשלום דאנה." />
+  <meta property="og:title" content="רעשי רקע · אתגר של PINK MONEY CLUB" />
+  <meta property="og:description" content="5 צעדים לנקות את הרעש: וואטסאפ, מייל, משימות וזמן לעצמך. בתשלום דאנה, כמה שאת רוצה ויכולה." />
+  <!-- התמונה בתצוגה המקדימה בוואטסאפ. אחרי העלאה לגיטהאב: להחליף USERNAME בשם המשתמש שלך -->
+  <meta property="og:image" content="https://USERNAME.github.io/raashei-reka/assets/about-photo.jpg" />
+  <meta property="og:locale" content="he_IL" />
+
+  <!-- הסמל הקטן בלשונית הדפדפן: עיגול ורוד עם ר' -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23F3BCC9' stroke='%231C1517' stroke-width='3'/%3E%3Ctext x='32' y='44' font-size='34' font-family='serif' font-weight='900' text-anchor='middle' fill='%231C1517'%3E%D7%A8%3C/text%3E%3C/svg%3E" />
+
+  <!-- גופנים מ-Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap" rel="stylesheet" />
+
+  <!-- קובץ העיצוב -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===================== סרגל עליון ===================== -->
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a href="#top" class="logo">רעשי רקע<span class="logo__dot">.</span></a>
+      <a class="btn btn--small wa-link" href="https://wa.me/972547849329" target="_blank" rel="noopener">בואי, נתחיל יחד</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===================== 1. HERO: הפתיחה ===================== -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__text">
+          <!-- תווית המועדון: האתגר הוא חלק מ-PINK MONEY CLUB -->
+          <p class="club-badge">חלק מ־<b>PINK MONEY CLUB</b></p>
+          <p class="eyebrow">אתגר 5 צעדים · לנשים עמוסות · 20.11 עד 30.11</p>
+          <h1>הראש שלך <br />הוא לא <span class="hl">קבוצת וואטסאפ.</span></h1>
+          <p class="lead">
+            בית, ילדים, עסק, הודעות, מיילים ורשימות שלא נגמרות.
+            בחמישה צעדים פשוטים נפרק את הרעש, נסדר מקום אחד לכל המשימות
+            ונשריין ביומן זמן שהוא רק שלך. כדי שתחזירי לעצמך את השליטה.
+          </p>
+          <div class="hero__cta">
+            <!-- הכפתור הראשי: ורוד ומזמין, עם שתי שורות טקסט -->
+            <a class="btn btn--invite wa-link" href="https://wa.me/972547849329" target="_blank" rel="noopener">
+              <span class="btn__bubble" aria-hidden="true"><span class="wa-icon"></span></span>
+              <span class="btn__text">
+                <span class="btn__main">בואי, נתחיל יחד</span>
+                <span class="btn__sub">הודעה קטנה בוואטסאפ ואשמור לך מקום</span>
+              </span>
+            </a>
+            <p class="microcopy">20.11 עד 30.11 · בתשלום דאנה בביט · מחכה לך 💗</p>
+          </div>
+        </div>
+
+        <!-- האיור: "רעש" של התראות שמתנקה לזמן שקט. רק עיצוב, בלי טקסט חשוב -->
+        <div class="hero__visual" aria-hidden="true">
+          <div class="noise">
+            <div class="chip chip--fade4"><b>קבוצת הגן</b><span>112</span></div>
+            <div class="chip chip--fade3"><b>ועד הבית</b><span>38</span></div>
+            <div class="chip chip--fade2"><b>לקוחה · "רק שאלה קטנה..."</b><span>4</span></div>
+            <div class="chip chip--fade1"><b>מייל · חשבונית לא שולמה</b><span>!</span></div>
+            <div class="chip chip--fade0"><b>תזכורת · תור לרופא שיניים</b><span>?</span></div>
+            <div class="chip chip--calm"><b>✓ זמן לעצמי</b><span>20:00</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 2. הבעיה ===================== -->
+    <section class="section problem" id="problem">
+      <div class="container problem__grid">
+        <div>
+          <p class="eyebrow">את מכירה את זה?</p>
+          <h2>יש יותר מדי רעש. <br />ואת זאת שמחזיקה את כולו.</h2>
+          <ul class="checklist">
+            <li>מאות הודעות שלא נקראו, ואת לא בטוחה מה מהן באמת דורש אותך.</li>
+            <li>משימה שנזכרת בה במקלחת ונעלמת עד שאת מתייבשת.</li>
+            <li>יום שלם של ריצה, ובסוף דווקא מה שחשוב לא קרה.</li>
+            <li>גם כשאת סוף סוף נחה, הראש ממשיך לעבור על רשימות.</li>
+          </ul>
+        </div>
+        <aside class="problem__card">
+          <p class="problem__big">זה לא את.<br />זה העומס.</p>
+          <p>
+            עומס שמצטבר בשקט, יום אחרי יום, עד שהוא הופך לשחיקה ולעייפות מנטלית
+            שלא עוברת גם אחרי שינה טובה. תשומת הלב שלך היא משאב יקר.
+            כרגע כולם לוקחים ממנו, חוץ ממך.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===================== 3. ההצעה ===================== -->
+    <section class="section offer" id="offer">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">מה עושים עם זה</p>
+          <h2>5 צעדים לנקות את רעשי הרקע</h2>
+          <p class="section__sub">
+            כל יומיים תקבלי ממני משימה אחת, ברורה וממוקדת. לא תיאוריה, לא עוד קורס שנשאר פתוח בלשונית.
+            עושות, מרגישות את ההבדל, ממשיכות.
+          </p>
+        </div>
+
+        <div class="offer__grid">
+          <!-- הצעדים. לשינוי צעד: משנים את הכותרת והטקסט שמתחתיה -->
+          <ol class="steps">
+            <li class="step">
+              <span class="step__num">1</span>
+              <div>
+                <h3>מפרקות את הוואטסאפ</h3>
+                <p>קבוצות, השתקות, ארכיון. מחליטות מה באמת צריך אותך, ומה יכול לחכות.</p>
+              </div>
+            </li>
+            <li class="step">
+              <span class="step__num">2</span>
+              <div>
+                <h3>מנקות את המייל</h3>
+                <p>תיבה שלא מאיימת עלייך כל בוקר. פחות רעש, יותר סדר.</p>
+              </div>
+            </li>
+            <li class="step">
+              <span class="step__num">3</span>
+              <div>
+                <h3>כלי אחד לכל המשימות</h3>
+                <p>כל מה שמסתובב לך בראש עובר למקום אחד, פשוט, שעובד בשבילך.</p>
+              </div>
+            </li>
+            <li class="step">
+              <span class="step__num">4</span>
+              <div>
+                <h3>מעגנות זמן ביומן</h3>
+                <p>זמן שמור לעבודה, לבית, ולך. כי מה שלא ביומן, לא קורה.</p>
+              </div>
+            </li>
+            <li class="step">
+              <span class="step__num">5</span>
+              <div>
+                <h3>שגרה שמחזיקה</h3>
+                <p>מחברות את הכול להרגל קצר ויומיומי, כדי שהשקט יישאר גם אחרי האתגר.</p>
+              </div>
+            </li>
+          </ol>
+
+          <!-- מה כלול + למי זה -->
+          <div class="offer__side">
+            <div class="box box--pink">
+              <h3>מה מקבלים</h3>
+              <ul class="dots">
+                <li>משימה אחת ברורה כל יומיים</li>
+                <li>קבוצת וואטסאפ ייעודית ושקטה לאתגר</li>
+                <li>אני זמינה לשאלות והתייעצויות לאורך כל הדרך</li>
+                <li>עשרה ימים: 20.11 עד 30.11</li>
+                <li>תשלום בדאנה בביט: כמה שאת רוצה ויכולה</li>
+              </ul>
+            </div>
+            <div class="box">
+              <h3>בשביל מי זה</h3>
+              <p>לנשים. אמהות, עצמאיות, בעלות עסק ושכירות. לכל מי שמרגישה שהיא מחזיקה יותר מדי כדורים באוויר.</p>
+            </div>
+            <div class="box box--ink">
+              <h3>לאן זה לוקח אותך</h3>
+              <p>פחות הצפה. פחות משימות שנופלות בין הכיסאות. יותר בחירה מודעת: את מחליטה לאן הולכת תשומת הלב שלך.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 4. עליי ===================== -->
+    <section class="section about" id="about">
+      <div class="container about__grid">
+        <figure class="about__photo">
+          <!-- התמונה: לשמור בתיקייה assets בשם about-photo.jpg -->
+          <img src="assets/about-photo.jpg" alt="דינה, מובילת אתגר רעשי רקע" loading="lazy"
+               onerror="this.parentElement.classList.add('no-photo')" />
+          <span class="about__fallback" aria-hidden="true">ד</span>
+        </figure>
+        <div class="about__text">
+          <p class="eyebrow">נעים מאוד, אני דינה</p>
+          <h2>אני לא מלמדת את זה מבחוץ. <br />אני חיה את זה.</h2>
+          <p>
+            אמא לארבעה בחינוך ביתי, עצמאית, ומלווה נשים ואנשים בעולמות הסושיאל
+            והעצמאות העסקית. כבר 11 שנה שאני מחזיקה את העולמות האלה במקביל.
+          </p>
+          <p>
+            בתור מי שמחזיקה לא מעט כדורים בג'אגלינג של החיים, אני יודעת כמה העומס
+            מתיש, כמה הוא מסיח את הדעת, ועד כמה תשומת הלב שלנו היא משאב יקר ערך.
+            את הכלים שאני חולקת כאן מצאתי מתוך העומס הפרטי שלי, ובדקתי אותם עם
+            לא מעט נשים שליוויתי לאורך השנים.
+          </p>
+          <p class="about__quote">
+            באתגר הזה נלמד לבחור במודע לאן אנחנו מפנות את תשומת הלב,
+            ואיך מחלקות את הקשב כך שיישאר זמן גם לנו.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 5. למה זה עובד ===================== -->
+    <section class="section benefits" id="benefits">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">למה זה עובד</p>
+          <h2>קטן, ברור, ובקצב שלך</h2>
+        </div>
+        <div class="benefits__grid">
+          <article class="benefit">
+            <span class="benefit__icon" aria-hidden="true">01</span>
+            <h3>צעד אחד בכל פעם</h3>
+            <p>משימה אחת, יומיים לעשות אותה. בלי להעמיס עוד עומס על העומס.</p>
+          </article>
+          <article class="benefit">
+            <span class="benefit__icon" aria-hidden="true">02</span>
+            <h3>כלים שנבדקו בחיים אמיתיים</h3>
+            <p>לא מספר על פרודוקטיביות. דברים שעובדים בבית עם ילדים, עסק והודעות.</p>
+          </article>
+          <article class="benefit">
+            <span class="benefit__icon" aria-hidden="true">03</span>
+            <h3>את לא לבד</h3>
+            <p>קבוצה של נשים שעוברות את זה איתך, ואני זמינה לכל שאלה בדרך.</p>
+          </article>
+          <article class="benefit">
+            <span class="benefit__icon" aria-hidden="true">04</span>
+            <h3>שינוי שמרגישים</h3>
+            <p>פחות רעש בטלפון, ראש צלול יותר, ויותר מקום להחליט מה חשוב לך.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 6. שאלות נפוצות ===================== -->
+    <section class="section faq" id="faq">
+      <div class="container faq__inner">
+        <div class="section__head">
+          <p class="eyebrow">שאלות שאולי יש לך</p>
+          <h2>רגע לפני שאת שולחת הודעה</h2>
+        </div>
+
+        <!-- כל שאלה היא details: לחיצה פותחת וסוגרת -->
+        <details class="faq__item">
+          <summary>למי זה מתאים?</summary>
+          <p>לכולן, באמת. יש לך וואטסאפ? את קמה כל בוקר והראש כבר מלא ברשימות? זה בשבילך.</p>
+        </details>
+        <!-- השאלה הזאת פתוחה מראש, כי התאריך הוא הדבר הכי דחוף לדעת -->
+        <details class="faq__item" open>
+          <summary>מתי מתחילים, וכמה זמן זה נמשך?</summary>
+          <p>האתגר נמשך עשרה ימים: מיום שישי, 20.11.2026, ועד יום שני, 30.11.2026. שלחי לי הודעה לפני כן, כדי שאספיק לצרף אותך לקבוצה ותתחילי יחד עם כולן.</p>
+        </details>
+        <details class="faq__item">
+          <summary>כמה זמן זה ייקח לי?</summary>
+          <p>תלוי בך. בממוצע מספיקה שעה ביום למשימה שלנו, ואת לגמרי תרגישי את השינוי.</p>
+        </details>
+        <details class="faq__item">
+          <summary>כמה זה עולה?</summary>
+          <p>האתגר בתשלום דאנה: כמה שאת רוצה ויכולה, בהעברה בביט. אני משתפת אותו כי אני רואה כמה נשים סביבי צריכות את זה.</p>
+        </details>
+        <details class="faq__item">
+          <summary>מה קורה אחרי שאני שולחת הודעה?</summary>
+          <p>אני חוזרת אלייך עם קישור לקבוצת הוואטסאפ של האתגר, ומשם יוצאות לדרך יחד.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ===================== 7. הזמנה אחרונה ===================== -->
+    <section class="final" id="join">
+      <div class="container final__inner">
+        <p class="eyebrow eyebrow--light">רעשי רקע · PINK MONEY CLUB</p>
+        <h2>זה יכול להיות אחרת.</h2>
+        <p class="final__lead">
+          את לא צריכה לעשות את זה לבד, ולא צריכה לעשות את זה מושלם.
+          רק להושיט יד ולשלוח הודעה קטנה. אני כאן, ונעבור את זה יחד,
+          צעד אחר צעד, בקצב שלך.
+        </p>
+        <!-- הכפתור בסוף הדף: אותו כפתור ורוד ומזמין כמו בפתיחה -->
+        <a class="btn btn--invite btn--on-dark wa-link" href="https://wa.me/972547849329" target="_blank" rel="noopener">
+          <span class="btn__bubble" aria-hidden="true"><span class="wa-icon"></span></span>
+          <span class="btn__text">
+            <span class="btn__main">אני רוצה להצטרף</span>
+            <span class="btn__sub">ואחזור אלייך עם קישור לקבוצה</span>
+          </span>
+        </a>
+        <p class="microcopy microcopy--light">20.11 עד 30.11 · בתשלום דאנה בביט<br />שומרת לך מקום 💗</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== תחתית הדף ===================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>רעשי רקע · אתגר של PINK MONEY CLUB</span>
+      <span>© <span id="year">2026</span></span>
+    </div>
+  </footer>
+
+  <!-- כפתור וואטסאפ צף שמופיע רק בטלפון, אחרי שגוללים -->
+  <a class="sticky-cta wa-link" href="https://wa.me/972547849329" target="_blank" rel="noopener" aria-label="שליחת הודעה בוואטסאפ">
+    <span class="btn__bubble" aria-hidden="true"><span class="wa-icon"></span></span>
+    בואי, נתחיל יחד
+  </a>
+
+  <!-- קובץ ההתנהגות -->
+  <script src="script.js"></script>
+</body>
+</html>
