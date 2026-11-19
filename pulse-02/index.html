@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מנקות את הפיד · פעימה 02</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@900&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a quiet companion page to the printed journal — exact, useful, room to breathe.
+   IDEA: one more page from the רעשי רקע journal, held next to the phone.
+   PICTURE: none — the lined writing spaces and simple checkboxes are the page's only marks.
+   COLOUR and TYPE: warm cream ground, charcoal titles and text, rose for small subheads and hairlines; Assistant throughout.
+   LAYOUT: one narrow column, thin rules between sections, small 01 / 05 at the top, small signature at the bottom. */
+:root{color-scheme:light;--bg:#F7F4F0;--ink:#343236;--rose:#C9859B;--deep:#B93D66;--soft:#6F6A6F;--line:#D9D5D4}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.8 Heebo,"Segoe UI",Arial,sans-serif;font-weight:400;overflow-x:clip}
+h1,h2,h3{font-family:inherit;margin:0 0 .6em;text-wrap:balance}
+h1{font-family:"Frank Ruhl Libre",Georgia,serif;font-size:clamp(38px,10vw,56px);font-weight:900;line-height:1.08;color:var(--ink);letter-spacing:-.01em}
+h2{font-size:15px;font-weight:600;color:var(--deep);line-height:1.4;margin-bottom:1.1em}
+h3{font-size:22px;font-weight:600;color:var(--ink);line-height:1.3}
+p{margin:0 0 1em}a{color:var(--ink);text-decoration-color:var(--rose);text-underline-offset:3px}
+.wrap{max-width:640px;margin:0 auto;padding:0 24px}
+section{padding:52px 0;border-bottom:1px solid var(--line)}
+/* header */
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;padding-block:12px}
+.crumb{white-space:nowrap;font-size:14px;color:var(--soft);letter-spacing:.02em}.crumb span{color:var(--ink)}
+.pulses{display:flex;gap:4px;width:90px;flex:0 1 90px}
+.pulses i{flex:1;height:2px;background:var(--line)}.pulses i.on{background:var(--deep)}
+.count{font-size:13px;color:var(--soft);white-space:nowrap;margin-inline-start:auto;text-decoration:none;padding:12px 0;margin-block:-12px}
+/* hero */
+.hero{padding-top:56px}
+.sub{font-size:20px;color:var(--soft);margin-bottom:1.4em;line-height:1.5}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 36px;padding:0;list-style:none;font-size:14px;color:var(--soft)}
+.meta li{white-space:nowrap}.meta li+li::before{content:"·";margin-inline-end:18px;color:var(--rose)}
+.lead{font-size:20px;line-height:1.6}
+.quote{border-inline-start:1px solid var(--rose);padding:2px 18px;margin:28px 0 0;font-size:19px}
+ul.dots{padding-inline-start:1.1em;margin:0 0 1em}ul.dots li{margin-bottom:.4em}ul.dots li::marker{color:var(--rose)}
+/* tracks */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:0 32px}
+.track{padding:14px 0;border-top:1px solid var(--line)}
+.track b{display:block;font-size:19px;font-weight:600}
+.track .t{font-size:14px;color:var(--deep);white-space:nowrap}
+.track p{color:var(--ink)}
+/* steps */
+.step{padding:34px 0;border-top:1px solid var(--line)}
+.step .n{font-size:14px;color:var(--deep);font-weight:600;margin-bottom:6px}
+.ask{border-inline-start:1px solid var(--rose);padding:2px 18px;margin:18px 0}
+.ask ul{margin:.4em 0 0;padding-inline-start:1.1em}.ask li::marker{color:var(--rose)}
+.note{font-size:15px;color:var(--soft);margin-top:14px}
+.note b{color:var(--ink);font-weight:600}
+.cats{margin:14px 0}
+.cats div{padding:10px 0;border-bottom:1px solid var(--line)}.cats div:last-child{border:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px 22px;list-style:none;padding:0;margin:12px 0}
+.tags li{font-size:16px}.tags li::before{content:"— ";color:var(--rose)}
+/* checks */
+.chk{display:flex;gap:14px;align-items:flex-start;padding:10px 0;cursor:pointer;min-height:44px}
+.chk input{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;margin:5px 0 0;border:1px solid var(--ink);border-radius:2px;background:transparent;cursor:pointer;display:grid;place-content:center}
+.chk input::after{content:"";width:10px;height:5px;border:solid var(--deep);border-width:0 0 1.5px 1.5px;transform:rotate(-45deg) translate(1px,-1px);opacity:0}
+.chk input:checked{border-color:var(--deep)}.chk input:checked::after{opacity:1}
+.chk input:checked+span{color:var(--soft)}
+.chk input:focus-visible,button:focus-visible,a:focus-visible,summary:focus-visible,textarea:focus-visible{outline:2px solid var(--deep);outline-offset:3px}
+.step .chk{margin-top:18px}
+/* details */
+details{border-top:1px solid var(--line)}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:16px 0;min-height:54px;font-weight:600;display:flex;align-items:center;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";margin-inline-start:auto;flex:none;color:var(--rose);font-weight:400;font-size:22px;line-height:1}
+details[open]>summary::after{content:"–"}
+.body{padding:0 0 22px}
+.big summary{font-size:20px}
+.tabs{display:flex;gap:28px;border-bottom:1px solid var(--line);margin:0 0 20px}
+.tabs button{min-height:44px;border:0;border-bottom:1px solid transparent;margin-bottom:-1px;background:transparent;color:var(--soft);font:600 16px Heebo,sans-serif;cursor:pointer;padding:0}
+.tabs button[aria-selected=true]{color:var(--ink);border-color:var(--rose)}
+.pane[hidden]{display:none}
+.pane h4{display:none;margin:14px 0 4px;color:var(--rose);font-size:15px}
+.body h3{font-size:17px;margin:18px 0 6px}
+ol.how{padding-inline-start:1.3em;margin:.2em 0 1em}ol.how li{margin-bottom:.4em}ol.how li::marker{color:var(--rose)}
+.setting{border-top:1px solid var(--line);padding-top:6px;margin-top:20px}
+.path{font-weight:600}
+.hl{border-inline-start:1px solid var(--rose);padding-inline-start:14px;margin-top:14px}
+.extra .note{margin-top:8px}
+/* final */
+.final .chk{border-bottom:1px solid var(--line);padding:14px 0}
+.bar{height:1px;background:var(--line);margin:0 0 10px}
+.bar i{display:block;height:1px;width:0;background:var(--rose);transition:width .35s}
+.done{margin-top:34px;font-size:18px}.done p:last-child{color:var(--deep)}
+label.q{display:block;font-weight:600;margin:26px 0 6px}
+textarea{width:100%;min-height:128px;font:17px/32px Heebo,sans-serif;color:var(--ink);background:transparent repeating-linear-gradient(to bottom,transparent 0 31px,var(--line) 31px 32px);background-attachment:local;border:0;border-radius:0;padding:0 2px;resize:vertical}
+.small{font-size:14px;color:var(--soft)}
+.share{text-align:center;padding:12px 0}
+.share h3{font-size:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 32px;border:1.5px solid var(--deep);color:var(--deep);font-weight:600;font-size:17px;text-decoration:none;margin:12px 0 4px;border-radius:99px}
+.btn:hover{background:var(--deep);color:var(--bg)}
+.book{text-align:center;padding:8px 0 0}.book p{margin:0 0 4px}.book .t{font-family:"Frank Ruhl Libre",Georgia,serif;font-weight:900;font-size:24px;color:var(--ink)}
+.buy{list-style:none;padding:0;margin:6px 0 0;display:flex;flex-wrap:wrap;justify-content:center;gap:0 28px}
+.book a{display:inline-block;min-height:44px;padding:10px 4px;color:var(--deep);font-weight:600;text-decoration-color:var(--rose)}
+.share .sec{display:inline-block;padding:10px;min-height:44px;font-size:15px}
+.help{list-style:none;padding:0;margin:0}.help li{border-bottom:1px solid var(--line)}
+.help a{display:flex;justify-content:space-between;gap:10px;padding:12px 0;min-height:48px;text-decoration:none}
+.help a::after{content:"↖";color:var(--rose)}
+.help .u{display:none}
+.margin{font-size:15px;color:var(--soft);text-align:center;padding:48px 0 0}
+footer{text-align:center;padding:36px 0 56px;color:var(--soft);font-size:13px}
+footer b{display:block;color:var(--ink);font-weight:600;font-size:12px;letter-spacing:.18em;margin-bottom:6px}
+.pdf{margin-top:20px;background:transparent;border:0;border-bottom:1px solid var(--rose);color:var(--ink);min-height:44px;padding:0 4px;font:15px Heebo,sans-serif;cursor:pointer}
+.pdfhint{display:none;font-size:13px;margin-top:8px}.pdfhint.on{display:block}
+@media(max-width:340px){.pulses{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{
+ @page{margin:18mm 16mm}
+ body{font-size:12pt;background:#F7F4F0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .top{position:static}.count,.tabs,.pdf,.pdfhint,.noprint{display:none!important}
+ section{padding:22px 0}
+ .step,.setting,.ask,.final,.share{break-inside:avoid}
+ details{border:0}summary{padding:6px 0;min-height:0}summary::after{display:none}.body{padding:0 0 10px}
+ .pane[hidden]{display:block!important}.pane h4{display:block}
+ .chk input::after{opacity:0!important}.chk input{border-color:var(--ink)!important}.chk input:checked+span{color:inherit}
+ textarea{resize:none}
+ .buy a::after{content:" · " attr(href);font-weight:400;font-size:9pt;color:var(--soft);direction:ltr}.buy{display:block}
+ .help .u{display:block;font-size:10pt;color:var(--soft);direction:ltr;text-align:right}.help a::after{display:none}.help a{display:block;padding:6px 0}
+}
+.dtitle{font-size:15px;color:var(--deep);font-weight:600;margin:34px 0 0}
+.rules{list-style:none;padding:0;margin:10px 0 0;border-top:1px solid var(--line)}
+.rules li{display:grid;grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr);align-items:center;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.rules .rq{color:var(--soft);line-height:1.5}
+.rules .arr{height:1px;background:var(--rose);position:relative}
+.rules .arr::after{content:"";position:absolute;inset-inline-end:-1px;top:-3px;width:6px;height:6px;border:solid var(--rose);border-width:1px 1px 0 0;transform:rotate(-135deg)}
+.rules .to b{font-weight:600;font-size:19px;display:block;line-height:1.35}
+.rules .to span{display:block;font-size:14px;color:var(--soft)}
+@media(max-width:480px){.rules li{grid-template-columns:1fr;gap:2px}.rules .arr{display:none}.rules .rq{font-size:15px}}
+.soft{color:var(--soft);font-size:18px}
+.ex{border-inline-start:1px solid var(--line);padding-inline-start:14px;color:var(--soft)}
+.chk.tight{margin-top:0}
+.biz{border-top:1px solid var(--line);margin-top:22px;padding-top:18px}
+.grp{font-size:14px;color:var(--deep);font-weight:600;margin:22px 0 0}
+.final .grp:first-child{margin-top:4px}
+#steps .step:first-child{padding-top:0;border-top:0}
+.ask p{margin-bottom:.5em}
+.guides{margin:20px 0 6px}
+.guides details{border-top:1px solid var(--line);border-bottom:0}
+.guides details:last-child{border-bottom:1px solid var(--line)}
+.guide summary{font-size:16px;font-weight:600;color:var(--ink);padding:12px 0;min-height:50px}
+.guide summary::before{content:"מדריך";font-size:13px;color:var(--deep);font-weight:600;flex:none}
+.guide .body{padding-bottom:18px}
+.guide .done-btn{display:block;margin:8px 0 0;background:transparent;border:0;border-bottom:1px solid var(--rose);color:var(--soft);font:14px Heebo,sans-serif;min-height:40px;padding:0 2px;cursor:pointer}
+.goals li{grid-template-columns:110px minmax(0,1fr)}
+.goals .rq{color:var(--ink)}
+@media(max-width:480px){.goals li{grid-template-columns:1fr}}
+.mins{list-style:none;padding:0;margin:8px 0 0}.mins li{display:flex;gap:12px;padding:6px 0;border-bottom:1px solid var(--line)}.mins li:last-child{border:0}
+.mins span{flex:none;width:52px;color:var(--deep);font-size:14px;font-weight:600;padding-top:2px;white-space:nowrap}
+.choice{margin:6px 0 0;border-top:1px solid var(--line)}
+.choice .chk{border-bottom:1px solid var(--line);margin:0;padding:12px 0}
+.chk input[type=radio]{border-radius:50%}
+.chk input[type=radio]::after{width:10px;height:10px;border:0;border-radius:50%;background:var(--deep);transform:none}
+.choice .chk input:checked+span{color:var(--ink);font-weight:600}
+.pane bdi,.opt bdi{white-space:nowrap}
+.opt{border-inline-start:1px solid var(--rose);padding:2px 14px;margin:16px 0 4px}
+.opt .n{font-size:14px;color:var(--deep);font-weight:600;margin:0 0 4px}
+.q-title{margin:20px 0 4px}
+.topics{padding-inline-start:1.4em;margin:0 0 8px}.topics li::marker{color:var(--deep)}
+.topics input{width:100%;font:17px Heebo,sans-serif;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line);padding:10px 2px;min-height:46px;border-radius:0}
+.topics input:focus{outline:none;border-bottom-color:var(--deep)}
+.end{font-family:"Frank Ruhl Libre",Georgia,serif;font-weight:900;font-size:30px}
+.done p:last-child{color:var(--deep)}
+.prev{display:inline-block;margin-top:14px;color:var(--soft);font-size:14px;min-height:44px;padding:10px}
+@media print{.choice .chk input:checked::after,.chk input[type=radio]::after{opacity:0!important}.topics input{border-bottom:1px solid #999}.opt{break-inside:avoid}.tabs{display:none!important}}
+.book2 .t{font-family:"Frank Ruhl Libre",Georgia,serif;font-weight:900;font-size:clamp(34px,8vw,44px);color:var(--ink);line-height:1.1;margin:0}
+.book2 .bsub{color:var(--soft);font-size:18px;margin:4px 0 22px}
+.weeks{list-style:none;padding:0;margin:8px 0 12px;border-top:1px solid var(--line);counter-reset:w}
+.weeks li{counter-increment:w;display:grid;grid-template-columns:34px minmax(0,1fr);column-gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
+.weeks li::before{content:counter(w);grid-row:span 2;color:var(--deep);font-family:"Frank Ruhl Libre",Georgia,serif;font-weight:900;font-size:22px;line-height:1.3}
+.weeks b{font-weight:600}.weeks span{color:var(--soft);font-size:15px}
+.facts{list-style:none;padding:0;margin:18px 0;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:14px;color:var(--soft)}
+.facts li{white-space:nowrap}.facts li::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--rose);margin-inline-end:8px;vertical-align:middle}
+.buy2{display:flex;flex-wrap:wrap;gap:10px 12px;margin:6px 0 4px}
+.buy2 .btn{margin:0;flex:1 1 180px}
+.bwink{color:var(--deep);margin-top:22px}
+@media print{.book2{break-inside:avoid}.buy2 .btn::after{content:" · " attr(href);font-weight:400;font-size:8pt;direction:ltr}}
+.book2{border:1px solid var(--rose);background:#FFFDFA;padding:34px clamp(20px,5vw,40px) 30px;margin:40px 0 8px;position:relative}
+.book2::before{content:"";position:absolute;inset:6px;border:1px solid var(--line);pointer-events:none}
+.book2>*{position:relative}
+.book2 .kicker{font-size:13px;color:var(--soft);letter-spacing:.04em;margin:0 0 14px}
+@media(max-width:480px){.book2{margin-inline:-8px}}
+@media print{.book2{background:#FFFDFA}}
+</style>
+</head>
+<body>
+<header class="top">
+ <div class="wrap">
+  <div class="crumb">רעשי רקע · <span>02 / 05</span></div>
+  <div class="pulses" aria-label="פעימה 2 מתוך 5"><i></i><i class="on"></i><i></i><i></i><i></i></div>
+  <a class="count" id="count" href="#checklist" aria-live="polite" aria-label="מעבר לצ׳קליסט"></a>
+ </div>
+</header>
+
+<main class="wrap">
+
+<section class="hero">
+ <h1>מנקות את הפיד</h1>
+ <p class="sub">לא כל מה שעובר לך מול העיניים צריך להיכנס לך לראש.</p>
+ <ul class="meta"><li><bdi dir="ltr">22–23.11.2026</bdi></li><li>20 דקות, או <bdi dir="ltr">45–60</bdi> למי שרוצה</li></ul>
+ <p class="lead">מתי בפעם האחרונה בדקת אחרי מי את בכלל עוקבת?</p>
+ <p>לא את מי האלגוריתם החליט להראות לך.<br>את מי <em>את</em> בחרת להכניס לפיד שלך.</p>
+ <p>יש שם חשבונות שפעם עניינו אותך, כאלה שאת כבר לא זוכרת למה התחלת לעקוב אחריהם, וכאלה שאת ממשיכה לראות פשוט כי הם שם.</p>
+ <p>והפיד?<br>הוא ממשיך להגיש לך עוד מאותו הדבר.</p>
+ <p><b>היום אנחנו עושות בו סדר.</b></p>
+ <p>קודם מוציאות את מה שכבר לא מעניין אותנו, ואז מתחילות ללמד את הפיד מה דווקא כן.</p>
+</section>
+
+<section>
+ <h2>מה המטרה היום?</h2>
+ <ol class="rules goals">
+  <li><span class="to"><b>לנקות</b></span><span class="rq">להפסיק לעקוב אחרי חשבונות שכבר לא מעניינים אותי.</span></li>
+  <li><span class="to"><b>לבחור</b></span><span class="rq">לזהות איזה תוכן אני דווקא רוצה לראות.</span></li>
+  <li><span class="to"><b>להשפיע</b></span><span class="rq">לתת לאלגוריתם סימנים ברורים יותר לגבי ההעדפות שלי.</span></li>
+ </ol>
+ <p class="quote">לא צריך למחוק את כל הרשתות החברתיות.<br>רק להפסיק לתת להן להחליט לבד מה נכנס לנו לראש.</p>
+ <p class="note">הפיד לא מתאפס ביום אחד.<br>ההמלצות משתנות בהדרגה, לפי מה שאת עושה לאורך זמן.</p>
+</section>
+
+<section>
+ <h2>כמה זמן זה לוקח?</h2>
+ <div class="tracks">
+  <div class="track"><b>מסלול קצר</b><span class="t">20 דקות</span>
+   <ul class="mins">
+    <li><span>2 דק׳</span>בוחרת רשת חברתית אחת.</li>
+    <li><span>10 דק׳</span>עוברת על חשבונות ומסירה מעקב או משתיקה.</li>
+    <li><span>5 דק׳</span>מחפשת בכוונה תוכן שמעניין אותי.</li>
+    <li><span>3 דק׳</span>מסכמת מה השתנה.</li>
+   </ul>
+  </div>
+  <div class="track"><b>מסלול יסודי</b><span class="t"><bdi dir="ltr">45–60</bdi> דקות</span>
+   <ul class="dots">
+    <li>עוברת על יותר מרשימת המעקב.</li>
+    <li>מנקה גם חשבונות והמלצות שעולים בפיד.</li>
+    <li>משתמשת בכלי ההתאמה האישית של הרשת.</li>
+    <li>מחפשת כמה תחומי עניין חדשים, או כאלה שהוזנחו.</li>
+    <li>בוחרת הרגל קטן להמשך.</li>
+   </ul>
+  </div>
+ </div>
+ <p class="note">רשת אחת בלבד: זו שבה את צורכת הכי הרבה תוכן.<br>לא צריך לנקות את כולן.</p>
+</section>
+
+<section id="steps">
+ <article class="step">
+  <div class="n">שלב 01</div>
+  <h3>בוחרת את הרשת הראשית שלי</h3>
+  <p class="soft">לא מנקות את כל האינטרנט ביום אחד.</p>
+  <p>פותחת את הרשת החברתית שבה אני מבלה הכי הרבה זמן: אינסטגרם, פייסבוק, טיקטוק או רשת אחרת.</p>
+  <p>לא חייבים לבחור את הרשת שבה אני מפרסמת הכי הרבה.<br>דווקא את זו שבה אני <em>צורכת</em> הכי הרבה.</p>
+  <div class="ask"><p style="margin:0"><b>איפה אני מוצאת את עצמי גוללת גם כשלא באמת תכננתי?</b></p></div>
+  <div class="choice" role="radiogroup" aria-label="הרשת הראשית שלי">
+   <label class="chk"><input type="radio" name="net" value="ig"><span>אינסטגרם</span></label>
+   <label class="chk"><input type="radio" name="net" value="fb"><span>פייסבוק</span></label>
+   <label class="chk"><input type="radio" name="net" value="tt"><span>טיקטוק</span></label>
+   <label class="chk"><input type="radio" name="net" value="other"><span>אחרת</span></label>
+  </div>
+  <p class="note noprint">לא חובה.<br>אם תבחרי, המדריכים בהמשך ייפתחו ישר על הרשת שלך.</p>
+  <label class="chk"><input type="checkbox" data-k="net"><span>בחרתי את הרשת החברתית העיקרית שלי</span></label>
+ </article>
+
+ <article class="step">
+  <div class="n">שלב 02</div>
+  <h3>עוברת על מי שאני עוקבת אחריו</h3>
+  <p class="soft">פעם בחרת לעקוב.<br>מותר לך לבחור אחרת.</p>
+  <p>נכנסת לרשימת החשבונות שאני עוקבת אחריהם ומתחילה לעבור עליה.</p>
+  <div class="ask"><b>לגבי כל חשבון שואלת:</b>
+   <ul><li>התוכן שלו עדיין מעניין אותי?</li><li>הוא רלוונטי לחיים, לעבודה או לתחומי העניין שלי היום?</li><li>אני באמת רוצה להמשיך לראות אותו?</li></ul>
+  </div>
+  <p><b>התשובה לא?</b> מסירה מעקב.<br><b>רוצה להישאר בקשר, בלי לראות את התוכן כל הזמן?</b> בודקת אפשרות להשתיק.</p>
+  <p class="note"><b>לא צריך להצדיק את הבחירה.</b> מותר להפסיק לעקוב גם אחרי חשבון שפעם אהבת.</p>
+  <div class="guides">
+   <details class="guide">
+    <summary>איך מסירים מעקב ומשתיקים</summary>
+    <div class="body">
+     <div class="tabs" role="tablist" data-g="g2"><button role="tab" data-n="ig">אינסטגרם</button><button role="tab" data-n="fb">פייסבוק</button><button role="tab" data-n="tt">טיקטוק</button></div>
+     <div class="pane" id="g2-ig" role="tabpanel"><h4>אינסטגרם</h4>
+      <h3>מסירים מעקב</h3>
+      <ol class="how"><li>נכנסים לפרופיל האישי ולוחצים על ״במעקב״ (<bdi>Following</bdi>).</li><li>עוברים על החשבונות.</li><li>ליד חשבון שלא רוצים להמשיך איתו, לוחצים ״במעקב״ ובוחרים ״הפסקת מעקב״ (<bdi>Unfollow</bdi>).</li></ol>
+      <p class="small">אפשר גם להיכנס לפרופיל של החשבון ולהפסיק לעקוב משם.</p>
+      <h3>משתיקים</h3>
+      <ol class="how"><li>נכנסים לפרופיל של החשבון ולוחצים ״במעקב״.</li><li>בוחרים ״השתקה״ (<bdi>Mute</bdi>).</li><li>בוחרים מה להשתיק: פוסטים, סטוריז או רילס.</li></ol>
+     </div>
+     <div class="pane" id="g2-fb" role="tabpanel" hidden><h4>פייסבוק</h4>
+      <h3>מפסיקים לעקוב, בלי להסיר חברות</h3>
+      <ol class="how"><li>מוצאים פוסט של האדם, העמוד או הקבוצה.</li><li>פותחים את תפריט שלוש הנקודות של הפוסט.</li><li>בוחרים ״הפסקת מעקב״ (<bdi>Unfollow</bdi>).</li></ol>
+      <p class="small">אתם נשארים חברים, פשוט הפוסטים שלו לא יופיעו לך בפיד.<br>אפשר גם מהפרופיל עצמו, דרך אפשרויות החברות או המעקב.</p>
+      <h3>במקום להשתיק</h3>
+      <p>באותו תפריט יש לפעמים ״השהיה ל־30 יום״ (<bdi>Snooze</bdi>) — הפסקה זמנית, בלי להחליט עכשיו.</p>
+     </div>
+     <div class="pane" id="g2-tt" role="tabpanel" hidden><h4>טיקטוק</h4>
+      <h3>מסירים מעקב</h3>
+      <ol class="how"><li>נכנסים לפרופיל האישי.</li><li>פותחים את רשימת ״במעקב״ (<bdi>Following</bdi>).</li><li>ליד חשבון שלא רוצים להמשיך איתו, לוחצים על הכפתור ומבטלים את המעקב.</li></ol>
+      <p class="small">בטיקטוק אין השתקה של חשבון כמו באינסטגרם.<br>מה שעוזר הוא ״לא מעוניינת״ — בשלב הבא.</p>
+     </div>
+     <p class="note other-note" hidden>ברשתות אחרות העיקרון זהה: רשימת ״במעקב״ בפרופיל, ואפשרויות המעקב בפרופיל של כל חשבון.</p>
+     <button type="button" class="done-btn noprint" data-close>סגירת המדריך</button>
+    </div>
+   </details>
+  </div>
+  <label class="chk"><input type="checkbox" data-k="review"><span>עברתי על חשבונות שאני עוקבת אחריהם</span></label>
+  <label class="chk tight"><input type="checkbox" data-k="unf"><span>הסרתי מעקב או השתקתי חשבונות שכבר לא מעניינים אותי</span></label>
+ </article>
+
+ <article class="step">
+  <div class="n">שלב 03</div>
+  <h3>מנקה גם את מה שהפיד מציע לי</h3>
+  <p class="soft">לא כל המלצה היא המלצה טובה.</p>
+  <p>חוזרת לפיד עצמו.<br>כשמופיע תוכן שלא מעניין אותי, אני לא ממשיכה לצפות בו מתוך הרגל, אלא משתמשת באפשרויות שהרשת מציעה:</p>
+  <ul class="dots"><li>״לא מעוניינת״ (<bdi>Not interested</bdi>).</li><li>הסתרת פוסט או המלצה, אם יש.</li><li>השתקת חשבון.</li><li>הסרת מעקב מחשבון שכבר לא מתאים לי.</li></ul>
+  <p class="hl">המטרה: להפסיק לתת לתוכן לא רצוי עוד ועוד תשומת לב.</p>
+  <p class="note"><b>לא צריך לגלול כדי לנקות.</b> מספיקות כמה דקות, או לסמן בכל פעם שמשהו כזה עולה מעצמו.</p>
+  <div class="guides">
+   <details class="guide">
+    <summary>איך מסמנים תוכן שלא מעניין אותי</summary>
+    <div class="body">
+     <div class="tabs" role="tablist" data-g="g3"><button role="tab" data-n="ig">אינסטגרם</button><button role="tab" data-n="fb">פייסבוק</button><button role="tab" data-n="tt">טיקטוק</button></div>
+     <div class="pane" id="g3-ig" role="tabpanel"><h4>אינסטגרם</h4>
+      <ol class="how"><li>בפוסט או ברילס מומלץ, לוחצים על שלוש הנקודות.</li><li>בוחרים ״לא מעוניינת״ (<bdi>Not interested</bdi>).</li></ol>
+      <div class="opt"><p class="n">הרחבה, לא חובה: איפוס התוכן המוצע</p>
+       <p>פרופיל ← תפריט שלושת הקווים ← ״העדפות תוכן״ (<bdi>Content preferences</bdi>) ← ״איפוס התוכן המוצע״ (<bdi>Reset suggested content</bdi>), ואישור.</p>
+       <p class="small" style="margin:0">משנה רק את ההמלצות.<br>רשימת המעקב שלך לא נמחקת.<br>שימי לב: גם סימוני ״לא מעוניינת״ קודמים מתאפסים.</p>
+      </div>
+     </div>
+     <div class="pane" id="g3-fb" role="tabpanel" hidden><h4>פייסבוק</h4>
+      <ol class="how"><li>בפיד, בפוסט שלא רוצים לראות, לוחצים על ה־X או על שלוש הנקודות.</li><li>בוחרים מה שמופיע: ״הסתרת פוסט״, ״להציג פחות״ (<bdi>Show less</bdi>), ״השהיה״ או ״הפסקת מעקב״.</li></ol>
+      <p class="note">גם קבוצות הן חלק מהפיד.<br>קבוצה שכבר לא רלוונטית — אפשר להפסיק לעקוב אחריה או לעזוב אותה.</p>
+     </div>
+     <div class="pane" id="g3-tt" role="tabpanel" hidden><h4>טיקטוק</h4>
+      <ol class="how"><li>בסרטון לא רלוונטי, לוחצים לחיצה ארוכה על המסך (או פותחים את אפשרויות השיתוף).</li><li>בוחרים ״לא מעוניינת״ (<bdi>Not interested</bdi>).</li></ol>
+      <h3>עוד דרך: ניהול נושאים</h3>
+      <p>פרופיל ← תפריט ← ״הגדרות ופרטיות״ ← ״העדפות תוכן״ ← ״ניהול נושאים״ (<bdi>Manage topics</bdi>).<br>שם אפשר לבקש יותר או פחות מנושאים מסוימים.</p>
+      <div class="opt"><p class="n">הרחבה, לא חובה: רענון הפיד</p>
+       <p>באותו מסך ״העדפות תוכן״ יש ״רענון פיד בשבילך״ (<bdi>Refresh your For You feed</bdi>).<br>הרענון לא נוגע במי שאת עוקבת אחריו, והוא לא מחליף בחירה מתמשכת בתוכן.</p>
+      </div>
+     </div>
+     <p class="note other-note" hidden>ברשתות אחרות מחפשות בתפריט שלוש הנקודות של הפוסט אפשרות כמו ״לא מעוניינת״, ״הסתרה״ או ״להציג פחות״.</p>
+     <button type="button" class="done-btn noprint" data-close>סגירת המדריך</button>
+    </div>
+   </details>
+  </div>
+  <label class="chk"><input type="checkbox" data-k="mark"><span>סימנתי תוכן לא רצוי בפיד, כשהאפשרות זמינה</span></label>
+ </article>
+
+ <article class="step">
+  <div class="n">שלב 04</div>
+  <h3>מחפשת בכוונה את מה שכן מעניין אותי</h3>
+  <p class="soft">אחרי שפינינו מקום, אפשר לבחור מה ייכנס אליו.</p>
+  <p>חושבת על שלושה נושאים שהייתי רוצה לראות יותר: תחביבים, לימודים, רעיונות לעסק, ספרים, טיולים, עיצוב, בישול — כל מה שבאמת מעניין אותי.</p>
+  <p>נכנסת לחיפוש של הרשת, מחפשת אותם, ושומרת או עוקבת רק אחרי מה שאני באמת רוצה להמשיך לראות.</p>
+  <p class="note">אין צורך לעשות לייק לכל דבר או לעקוב אחרי עשרות חשבונות חדשים.<br>המטרה היא לבחור, לא להחליף עומס אחד באחר.</p>
+  <p class="q-title"><b>אילו שלושה נושאים הייתי רוצה לראות יותר?</b></p>
+  <ol class="topics">
+   <li><input type="text" id="t1" data-r aria-label="נושא 1" autocomplete="off"></li>
+   <li><input type="text" id="t2" data-r aria-label="נושא 2" autocomplete="off"></li>
+   <li><input type="text" id="t3" data-r aria-label="נושא 3" autocomplete="off"></li>
+  </ol>
+  <div class="guides">
+   <details class="guide">
+    <summary>איך מחפשים תוכן חדש</summary>
+    <div class="body">
+     <div class="tabs" role="tablist" data-g="g4"><button role="tab" data-n="ig">אינסטגרם</button><button role="tab" data-n="fb">פייסבוק</button><button role="tab" data-n="tt">טיקטוק</button></div>
+     <div class="pane" id="g4-ig" role="tabpanel"><h4>אינסטגרם</h4>
+      <ol class="how"><li>נכנסים ללשונית החיפוש (זכוכית המגדלת).</li><li>מקלידים נושא שמעניין אותך.</li><li>מסתכלים על תכנים וחשבונות רלוונטיים.</li><li>שומרים או עוקבים רק אחרי מה שרוצים להמשיך לראות.</li></ol>
+     </div>
+     <div class="pane" id="g4-fb" role="tabpanel" hidden><h4>פייסבוק</h4>
+      <ol class="how"><li>נכנסים לחיפוש.</li><li>מחפשים נושא, עמוד או קבוצה.</li><li>בודקים את התוכן לפני שמצטרפים או מתחילים לעקוב.</li></ol>
+     </div>
+     <div class="pane" id="g4-tt" role="tabpanel" hidden><h4>טיקטוק</h4>
+      <ol class="how"><li>נכנסים לחיפוש ומחפשים נושא רלוונטי.</li><li>צופים בתוכן שבאמת מעניין אותך.</li><li>עוקבים או שומרים רק את מה שרוצים להמשיך לראות.</li></ol>
+      <p class="small">ההמלצות בטיקטוק מושפעות מאוד ממה שצופים בו עד הסוף, לכן החיפוש היזום עוזר.</p>
+     </div>
+     <p class="note other-note" hidden>ברשתות אחרות: מחפשים את הנושא בחיפוש, ושומרים או עוקבים רק אחרי מה שמתאים.</p>
+     <button type="button" class="done-btn noprint" data-close>סגירת המדריך</button>
+    </div>
+   </details>
+  </div>
+  <label class="chk"><input type="checkbox" data-k="search"><span>חיפשתי בכוונה שלושה נושאים שמעניינים אותי</span></label>
+ </article>
+
+ <article class="step">
+  <div class="n">שלב 05</div>
+  <h3>בוחרת הרגל קטן להמשך</h3>
+  <p class="soft">האלגוריתם ממשיך ללמוד.<br>גם את יכולה להמשיך לבחור.</p>
+  <p>בוחרת פעולה אחת שאוכל להמשיך לעשות גם אחרי האתגר:</p>
+  <div class="choice" role="radiogroup" aria-label="ההרגל שלי">
+   <label class="chk"><input type="radio" name="habit" value="1"><span>כשמופיע תוכן שלא מעניין אותי, אסמן ״לא מעוניינת״.</span></label>
+   <label class="chk"><input type="radio" name="habit" value="2"><span>פעם בשבוע אבדוק כמה חשבונות שאני עוקבת אחריהם.</span></label>
+   <label class="chk"><input type="radio" name="habit" value="3"><span>לפני שאני פותחת רשת חברתית, אשאל את עצמי מה רציתי לעשות בה.</span></label>
+   <label class="chk"><input type="radio" name="habit" value="4"><span>כשאני רוצה תוכן בנושא מסוים, אחפש אותו במקום לגלול בלי כיוון.</span></label>
+  </div>
+  <p class="hl">לא צריך את כולם.<br>הרגל אחד מספיק.</p>
+  <label class="chk"><input type="checkbox" data-k="habit"><span>בחרתי הרגל אחד שיעזור לי לשמור על פיד רלוונטי יותר</span></label>
+ </article>
+</section>
+
+<section>
+ <h2>שאלות נפוצות</h2>
+ <div id="faq"></div>
+</section>
+
+<section id="checklist">
+ <h2>פעימה 02 | הצ׳קליסט שלי</h2>
+ <div class="bar noprint"><i id="bar"></i></div>
+ <div class="final">
+  <label class="chk"><input type="checkbox" data-k="net"><span>בחרתי את הרשת החברתית העיקרית שלי.</span></label>
+  <label class="chk"><input type="checkbox" data-k="review"><span>עברתי על חשבונות שאני עוקבת אחריהם.</span></label>
+  <label class="chk"><input type="checkbox" data-k="unf"><span>הסרתי מעקב או השתקתי חשבונות שכבר לא מעניינים אותי.</span></label>
+  <label class="chk"><input type="checkbox" data-k="mark"><span>סימנתי תוכן לא רצוי בפיד, כשהאפשרות זמינה.</span></label>
+  <label class="chk"><input type="checkbox" data-k="search"><span>חיפשתי בכוונה שלושה נושאים שמעניינים אותי.</span></label>
+  <label class="chk"><input type="checkbox" data-k="habit"><span>בחרתי הרגל אחד שיעזור לי לשמור על פיד רלוונטי יותר.</span></label>
+ </div>
+ <p class="note">לא חייבים לסמן הכול כדי לסיים.<br>כל סעיף שעשית הוא כבר פחות רעש.</p>
+</section>
+
+<section>
+ <h2>רגע של מחשבה</h2>
+ <label class="q" for="r1">איזה סוג תוכן גיליתי שאני ממשיכה לצרוך, למרות שהוא כבר לא מעניין אותי?</label>
+ <textarea id="r1" data-r></textarea>
+ <label class="q" for="r2">מה הייתי רוצה לראות יותר בפיד שלי מעכשיו?</label>
+ <textarea id="r2" data-r></textarea>
+ <p class="small noprint">לא חובה.<br>מה שכתבת כאן ובשלב 04 נשמר רק בדפדפן שלך ולא נשלח לשום מקום.</p>
+</section>
+
+<section>
+ <div class="done">
+  <h3 class="end">הפיד שלך. הבחירה שלך.</h3>
+  <p>הפיד לא ישתנה לגמרי ביום אחד.</p>
+  <p>אבל מעכשיו יש בו קצת פחות דברים שנשארו שם במקרה, וקצת יותר דברים שאת בוחרת לראות.</p>
+  <p>וזו התחלה טובה.</p>
+ </div>
+</section>
+
+<section style="border:0">
+ <div class="share">
+  <h3>סיימת?<br>ספרי לנו.</h3>
+  <p>איזה סוג תוכן החלטת להוציא מהפיד שלך — ומה היית רוצה לראות במקומו?<br>אפשר במשפט אחד.<br>לא צריך לציין שמות של חשבונות.</p>
+  <a class="btn" href="https://chat.whatsapp.com/ETWvSEqu0lyBO2JsaCfOIj?s=cl&amp;p=i&amp;mlu=4&amp;ilr=4&amp;iam=2" target="_blank" rel="noopener">חזרה לקבוצת האתגר</a>
+  <p class="small">הקישור פותח את הקבוצה.<br>את ההודעה כותבים שם בעצמך.</p>
+  <a class="sec" href="https://dina-ro.github.io/raashei-reka/" target="_blank" rel="noopener">חזרה לעמוד האתגר</a>
+ </div>
+</section>
+
+<section>
+ <h2>צריכה עזרה טכנית?</h2>
+ <p class="small">שמות הכפתורים במדריכים עשויים להשתנות בין גרסאות, שפות ומכשירים.<br>מרכזי העזרה הרשמיים:</p>
+ <ul class="help">
+  <li><a href="https://help.instagram.com/" target="_blank" rel="noopener">מרכז העזרה של אינסטגרם<span class="u">help.instagram.com</span></a></li>
+  <li><a href="https://www.facebook.com/help/" target="_blank" rel="noopener">מרכז העזרה של פייסבוק<span class="u">facebook.com/help</span></a></li>
+  <li><a href="https://support.tiktok.com/" target="_blank" rel="noopener">מרכז העזרה של טיקטוק<span class="u">support.tiktok.com</span></a></li>
+ </ul>
+</section>
+
+<section class="book2" id="journal">
+ <h2>להמשיך עם היומן</h2>
+ <p class="t">רעשי רקע</p>
+ <p class="bsub">יומן כתיבה לבהירות ולצעדים קטנים</p>
+ <p class="lead">היום פינית מקום בפיד.<br>היומן הוא המקום להחליט, בכתב ובקצב שלך, מה ייכנס אליו — ולא רק בפיד.</p>
+ <p>האתגר נמשך עשרה ימים.<br>הרעש, איך לומר, לא תמיד מכבד את לוח הזמנים.<br>היומן נבנה כדי ללוות אותך גם אחרי שהקבוצה נרגעת: בלי אפליקציה, בלי התראות, עם עט ודף.</p>
+ <h3>מה יש בפנים</h3>
+ <ol class="weeks">
+  <li><b>מזהות את הרעש</b><span>מה תופס לך את הראש, ומה מתוכו בכלל שלך.</span></li>
+  <li><b>מבררות מה חשוב</b><span>מה את רוצה שיקבל את תשומת הלב שלך.</span></li>
+  <li><b>בוחרות צעד קטן</b><span>אחד, מספיק קטן כדי שבאמת יקרה.</span></li>
+  <li><b>מתאימות וחוזרות</b><span>מה עבד, מה לא, ואיך ממשיכים בלי להתחיל מאפס.</span></li>
+ </ol>
+ <p class="small">ארבעה פרקים לארבעה שבועות, ולצדם עמודי תכנון שבועי ויומי, בדיקות קצרות עם עצמך ועמודי כתיבה חופשית.</p>
+ <ul class="facts">
+  <li><span>80 עמודים</span></li><li><span>צבע מלא</span></li><li><span>כריכה רכה</span></li><li><span><bdi dir="ltr">15 × 23</bdi> ס״מ</span></li>
+ </ul>
+ <div class="buy2">
+  <a class="btn" href="https://www.amazon.es/s?k=9798141078620" target="_blank" rel="noopener">להזמנה מאירופה</a>
+  <a class="btn" href="https://www.amazon.com/dp/B0HR1DB1BD" target="_blank" rel="noopener">להזמנה מישראל</a>
+ </div>
+ <p class="small">מחיר: <bdi dir="ltr">14.99</bdi> אירו או דולר.<br>בישראל מזמינים דרך אמזון ארה״ב, ודמי המשלוח מתווספים למחיר.</p>
+ <p class="bwink">פחות רעש בטלפון.<br>יותר מקום על הדף.</p>
+</section>
+
+<p class="margin">לא כל מה שמופיע מולך ראוי לזמן שלך.</p>
+</main>
+
+<footer>
+ <b>PINK MONEY CLUB</b>רעשי רקע · פעימה 02 מתוך 05<br>פחות רעש. יותר מקום.
+ <div class="noprint"><a class="prev" href="../pulse-01/">לפעימה 01</a></div>
+ <div><button class="pdf" id="pdf" type="button">שמירה כ־PDF</button>
+ <p class="pdfhint" id="pdfhint">אם לא נפתח חלון הדפסה: תפריט הדפדפן ← שיתוף / הדפסה ← שמירה כ־PDF.</p></div>
+</footer>
+
+<script>
+{
+const faq=[
+ ["אני חייבת לעבור על כל החשבונות שאני עוקבת אחריהם?","לא.<br>גם עשר דקות של מעבר ממוקד עושות שינוי.<br>עדיף להתחיל מאשר להיתקע מול רשימה אינסופית."],
+ ["אם אני מפסיקה לעקוב אחרי מישהו, הוא מקבל התראה?","בדרך כלל הרשתות לא שולחות התראה על הפסקת מעקב.<br>אבל מי שיבדוק את רשימת העוקבים שלו עשוי לשים לב."],
+ ["מה ההבדל בין הפסקת מעקב להשתקה?","בהפסקת מעקב את כבר לא עוקבת אחרי החשבון.<br>בהשתקה את ממשיכה לעקוב, אבל התוכן שלו מופיע לך פחות, לפי מה שהרשת מאפשרת."],
+ ["זה מישהו שאני מכירה, ולא נעים לי להפסיק לעקוב.","אפשר לבדוק אם יש אפשרות להשתיק.<br>המטרה היא לבחור איזה תוכן את צורכת, לא לנהל מערכות יחסים דרך הפיד."],
+ ["הפעולות האלה מאפסות את האלגוריתם?","לא באופן אוטומטי.<br>הן נותנות לרשת מידע חדש על ההעדפות שלך, ועשויות להשפיע על ההמלצות בהמשך."],
+ ["למה עדיין מופיע לי תוכן שלא מעניין אותי?","כי הפיד מושפע מהרבה גורמים: פעילות קודמת, המלצות ותוכן פופולרי.<br>השינוי לוקח זמן, והוא לא תמיד מלא."],
+ ["כדאי למחוק את האפליקציה?","לא חייבים.<br>הפעימה עוסקת בבחירת התוכן, לא בהכרח בהפסקת השימוש ברשת."],
+ ["אני משתמשת ברשתות לעבודה. איך אדע מה להוריד?","מבחינות בין חשבונות שנחוצים לעבודה לבין חשבונות שמייצרים עומס בלי לתרום.<br>לא כל חשבון מקצועי צריך להופיע בפיד כל יום."],
+ ["ומה אם אני אוהבת גם תוכן שטותי?","מצוין.<br>לא הכול צריך להיות מלמד או מועיל לעסק.<br>אם הוא משמח אותך ואת בוחרת בו — יש לו מקום."],
+ ["אני עוקבת אחרי אלפי חשבונות. מאיפה מתחילים?","מהרשת הראשית ומעשר דקות עבודה.<br>אפשר להתחיל מחשבונות שמופיעים הרבה בפיד ולא מעניינים אותך."],
+ ["אפשר לעשות את זה ביותר מרשת אחת?","כן, אם נשאר זמן ורצון.<br>אבל רשת אחת מספיקה בהחלט כדי להשלים את הפעימה."],
+ ["מה אם אני לא משתמשת ברשתות חברתיות?","אפשר ליישם את אותו עיקרון על מקור תוכן אחר שאת צורכת באופן קבוע: יוטיוב, אפליקציית חדשות או רשימת ערוצים."]
+];
+document.getElementById('faq').innerHTML=faq.map(([q,a])=>`<details><summary>${q}</summary><div class="body"><p style="margin:0">${a}</p></div></details>`).join('');
+
+const KEY='rr-pulse02';
+let st={c:{},r:{},net:'',habit:''};
+try{st=Object.assign(st,JSON.parse(localStorage.getItem(KEY))||{})}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const boxes=[...document.querySelectorAll('input[data-k]')];
+const keys=[...new Set(boxes.map(b=>b.dataset.k))];
+const render=()=>{
+ boxes.forEach(b=>b.checked=!!st.c[b.dataset.k]);
+ const n=keys.filter(k=>st.c[k]).length;
+ document.getElementById('count').textContent='סימנתי '+n+' מתוך '+keys.length;
+ document.getElementById('bar').style.width=(n/keys.length*100)+'%';
+};
+const tick=(k)=>{if(!st.c[k]){st.c[k]=true;save();render()}};
+boxes.forEach(b=>b.addEventListener('change',()=>{st.c[b.dataset.k]=b.checked;save();render()}));
+
+document.querySelectorAll('[data-r]').forEach(t=>{
+ t.value=st.r[t.id]||'';
+ t.addEventListener('input',()=>{st.r[t.id]=t.value;save()});
+});
+
+const setNet=(net)=>{
+ const n=['ig','fb','tt'].includes(net)?net:'ig';
+ document.querySelectorAll('.tabs').forEach(tl=>{
+  tl.querySelectorAll('button').forEach(b=>{const on=b.dataset.n===n;b.setAttribute('aria-selected',on);document.getElementById(tl.dataset.g+'-'+b.dataset.n).hidden=!on});
+ });
+ document.querySelectorAll('.other-note').forEach(p=>p.hidden=net!=='other');
+};
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>setNet(b.dataset.n)));
+
+document.querySelectorAll('input[name=net]').forEach(r=>{
+ r.checked=r.value===st.net;
+ r.addEventListener('change',()=>{st.net=r.value;save();setNet(r.value);tick('net')});
+});
+document.querySelectorAll('input[name=habit]').forEach(r=>{
+ r.checked=r.value===st.habit;
+ r.addEventListener('change',()=>{st.habit=r.value;save();tick('habit')});
+});
+setNet(st.net);render();
+
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>{const d=b.closest('details');d.open=false;d.querySelector('summary').scrollIntoView({block:'nearest'})}));
+
+let wasClosed=[];
+addEventListener('beforeprint',()=>{wasClosed=[...document.querySelectorAll('details:not([open])')];wasClosed.forEach(d=>d.open=true)});
+addEventListener('afterprint',()=>{wasClosed.forEach(d=>d.open=false);wasClosed=[]});
+
+document.getElementById('pdf').addEventListener('click',()=>{
+ document.getElementById('pdfhint').classList.add('on');
+ try{window.print()}catch(e){}
+});
+}
+</script>
+</body>
+</html>
