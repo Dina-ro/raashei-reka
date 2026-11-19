@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מנקות את הוואטסאפ · פעימה 01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@900&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a quiet companion page to the printed journal — exact, useful, room to breathe.
+   IDEA: one more page from the רעשי רקע journal, held next to the phone.
+   PICTURE: none — the lined writing spaces and simple checkboxes are the page's only marks.
+   COLOUR and TYPE: warm cream ground, charcoal titles and text, rose for small subheads and hairlines; Assistant throughout.
+   LAYOUT: one narrow column, thin rules between sections, small 01 / 05 at the top, small signature at the bottom. */
+:root{color-scheme:light;--bg:#F7F4F0;--ink:#343236;--rose:#C9859B;--deep:#B93D66;--soft:#6F6A6F;--line:#D9D5D4}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.8 Heebo,"Segoe UI",Arial,sans-serif;font-weight:400;overflow-x:clip}
+h1,h2,h3{font-family:inherit;margin:0 0 .6em;text-wrap:balance}
+h1{font-family:"Frank Ruhl Libre",Georgia,serif;font-size:clamp(38px,10vw,56px);font-weight:900;line-height:1.08;color:var(--ink);letter-spacing:-.01em}
+h2{font-size:15px;font-weight:600;color:var(--deep);line-height:1.4;margin-bottom:1.1em}
+h3{font-size:22px;font-weight:600;color:var(--ink);line-height:1.3}
+p{margin:0 0 1em}a{color:var(--ink);text-decoration-color:var(--rose);text-underline-offset:3px}
+.wrap{max-width:640px;margin:0 auto;padding:0 24px}
+section{padding:52px 0;border-bottom:1px solid var(--line)}
+/* header */
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;padding-block:12px}
+.crumb{white-space:nowrap;font-size:14px;color:var(--soft);letter-spacing:.02em}.crumb span{color:var(--ink)}
+.pulses{display:flex;gap:4px;width:90px;flex:0 1 90px}
+.pulses i{flex:1;height:2px;background:var(--line)}.pulses i:first-child{background:var(--rose)}
+.count{font-size:13px;color:var(--soft);white-space:nowrap;margin-inline-start:auto;text-decoration:none;padding:12px 0;margin-block:-12px}
+/* hero */
+.hero{padding-top:56px}
+.sub{font-size:20px;color:var(--soft);margin-bottom:1.4em;line-height:1.5}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 36px;padding:0;list-style:none;font-size:14px;color:var(--soft)}
+.meta li{white-space:nowrap}.meta li+li::before{content:"·";margin-inline-end:18px;color:var(--rose)}
+.lead{font-size:20px;line-height:1.6}
+.quote{border-inline-start:1px solid var(--rose);padding:2px 18px;margin:28px 0 0;font-size:19px}
+ul.dots{padding-inline-start:1.1em;margin:0 0 1em}ul.dots li{margin-bottom:.4em}ul.dots li::marker{color:var(--rose)}
+/* tracks */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:0 32px}
+.track{padding:14px 0;border-top:1px solid var(--line)}
+.track b{display:block;font-size:19px;font-weight:600}
+.track .t{font-size:14px;color:var(--deep);white-space:nowrap}
+.track p{color:var(--ink)}
+/* steps */
+.step{padding:34px 0;border-top:1px solid var(--line)}
+.step .n{font-size:14px;color:var(--deep);font-weight:600;margin-bottom:6px}
+.ask{border-inline-start:1px solid var(--rose);padding:2px 18px;margin:18px 0}
+.ask ul{margin:.4em 0 0;padding-inline-start:1.1em}.ask li::marker{color:var(--rose)}
+.note{font-size:15px;color:var(--soft);margin-top:14px}
+.note b{color:var(--ink);font-weight:600}
+.cats{margin:14px 0}
+.cats div{padding:10px 0;border-bottom:1px solid var(--line)}.cats div:last-child{border:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px 22px;list-style:none;padding:0;margin:12px 0}
+.tags li{font-size:16px}.tags li::before{content:"— ";color:var(--rose)}
+/* checks */
+.chk{display:flex;gap:14px;align-items:flex-start;padding:10px 0;cursor:pointer;min-height:44px}
+.chk input{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;margin:5px 0 0;border:1px solid var(--ink);border-radius:2px;background:transparent;cursor:pointer;display:grid;place-content:center}
+.chk input::after{content:"";width:10px;height:5px;border:solid var(--deep);border-width:0 0 1.5px 1.5px;transform:rotate(-45deg) translate(1px,-1px);opacity:0}
+.chk input:checked{border-color:var(--deep)}.chk input:checked::after{opacity:1}
+.chk input:checked+span{color:var(--soft)}
+.chk input:focus-visible,button:focus-visible,a:focus-visible,summary:focus-visible,textarea:focus-visible{outline:2px solid var(--deep);outline-offset:3px}
+.step .chk{margin-top:18px}
+/* details */
+details{border-top:1px solid var(--line)}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:16px 0;min-height:54px;font-weight:600;display:flex;align-items:center;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";margin-inline-start:auto;flex:none;color:var(--rose);font-weight:400;font-size:22px;line-height:1}
+details[open]>summary::after{content:"–"}
+.body{padding:0 0 22px}
+.big summary{font-size:20px}
+.tabs{display:flex;gap:28px;border-bottom:1px solid var(--line);margin:0 0 20px}
+.tabs button{min-height:44px;border:0;border-bottom:1px solid transparent;margin-bottom:-1px;background:transparent;color:var(--soft);font:600 16px Heebo,sans-serif;cursor:pointer;padding:0}
+.tabs button[aria-selected=true]{color:var(--ink);border-color:var(--rose)}
+.pane[hidden]{display:none}
+.pane h4{display:none;margin:14px 0 4px;color:var(--rose);font-size:15px}
+.body h3{font-size:17px;margin:18px 0 6px}
+ol.how{padding-inline-start:1.3em;margin:.2em 0 1em}ol.how li{margin-bottom:.4em}ol.how li::marker{color:var(--rose)}
+.setting{border-top:1px solid var(--line);padding-top:6px;margin-top:20px}
+.path{font-weight:600}
+.hl{border-inline-start:1px solid var(--rose);padding-inline-start:14px;margin-top:14px}
+.extra .note{margin-top:8px}
+/* final */
+.final .chk{border-bottom:1px solid var(--line);padding:14px 0}
+.bar{height:1px;background:var(--line);margin:0 0 10px}
+.bar i{display:block;height:1px;width:0;background:var(--rose);transition:width .35s}
+.done{margin-top:34px;font-size:18px}.done p:last-child{color:var(--deep)}
+label.q{display:block;font-weight:600;margin:26px 0 6px}
+textarea{width:100%;min-height:128px;font:17px/32px Heebo,sans-serif;color:var(--ink);background:transparent repeating-linear-gradient(to bottom,transparent 0 31px,var(--line) 31px 32px);background-attachment:local;border:0;border-radius:0;padding:0 2px;resize:vertical}
+.small{font-size:14px;color:var(--soft)}
+.share{text-align:center;padding:12px 0}
+.share h3{font-size:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 32px;border:1.5px solid var(--deep);color:var(--deep);font-weight:600;font-size:17px;text-decoration:none;margin:12px 0 4px;border-radius:99px}
+.btn:hover{background:var(--deep);color:var(--bg)}
+.book{text-align:center;padding:8px 0 0}.book p{margin:0 0 4px}.book .t{font-family:"Frank Ruhl Libre",Georgia,serif;font-weight:900;font-size:24px;color:var(--ink)}
+.buy{list-style:none;padding:0;margin:6px 0 0;display:flex;flex-wrap:wrap;justify-content:center;gap:0 28px}
+.book a{display:inline-block;min-height:44px;padding:10px 4px;color:var(--deep);font-weight:600;text-decoration-color:var(--rose)}
+.share .sec{display:inline-block;padding:10px;min-height:44px;font-size:15px}
+.help{list-style:none;padding:0;margin:0}.help li{border-bottom:1px solid var(--line)}
+.help a{display:flex;justify-content:space-between;gap:10px;padding:12px 0;min-height:48px;text-decoration:none}
+.help a::after{content:"↖";color:var(--rose)}
+.help .u{display:none}
+.margin{font-size:15px;color:var(--soft);text-align:center;padding:48px 0 0}
+footer{text-align:center;padding:36px 0 56px;color:var(--soft);font-size:13px}
+footer b{display:block;color:var(--ink);font-weight:600;font-size:12px;letter-spacing:.18em;margin-bottom:6px}
+.pdf{margin-top:20px;background:transparent;border:0;border-bottom:1px solid var(--rose);color:var(--ink);min-height:44px;padding:0 4px;font:15px Heebo,sans-serif;cursor:pointer}
+.pdfhint{display:none;font-size:13px;margin-top:8px}.pdfhint.on{display:block}
+@media(max-width:340px){.pulses{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{
+ @page{margin:18mm 16mm}
+ body{font-size:12pt;background:#F7F4F0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .top{position:static}.count,.tabs,.pdf,.pdfhint,.noprint{display:none!important}
+ section{padding:22px 0}
+ .step,.setting,.ask,.final,.share{break-inside:avoid}
+ details{border:0}summary{padding:6px 0;min-height:0}summary::after{display:none}.body{padding:0 0 10px}
+ .pane[hidden]{display:block!important}.pane h4{display:block}
+ .chk input::after{opacity:0!important}.chk input{border-color:var(--ink)!important}.chk input:checked+span{color:inherit}
+ textarea{resize:none}
+ .buy a::after{content:" · " attr(href);font-weight:400;font-size:9pt;color:var(--soft);direction:ltr}.buy{display:block}
+ .help .u{display:block;font-size:10pt;color:var(--soft);direction:ltr;text-align:right}.help a::after{display:none}.help a{display:block;padding:6px 0}
+}
+.dtitle{font-size:15px;color:var(--deep);font-weight:600;margin:34px 0 0}
+.rules{list-style:none;padding:0;margin:10px 0 0;border-top:1px solid var(--line)}
+.rules li{display:grid;grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr);align-items:center;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.rules .rq{color:var(--soft);line-height:1.5}
+.rules .arr{height:1px;background:var(--rose);position:relative}
+.rules .arr::after{content:"";position:absolute;inset-inline-end:-1px;top:-3px;width:6px;height:6px;border:solid var(--rose);border-width:1px 1px 0 0;transform:rotate(-135deg)}
+.rules .to b{font-weight:600;font-size:19px;display:block;line-height:1.35}
+.rules .to span{display:block;font-size:14px;color:var(--soft)}
+@media(max-width:480px){.rules li{grid-template-columns:1fr;gap:2px}.rules .arr{display:none}.rules .rq{font-size:15px}}
+.soft{color:var(--soft);font-size:18px}
+.ex{border-inline-start:1px solid var(--line);padding-inline-start:14px;color:var(--soft)}
+.chk.tight{margin-top:0}
+.biz{border-top:1px solid var(--line);margin-top:22px;padding-top:18px}
+.grp{font-size:14px;color:var(--deep);font-weight:600;margin:22px 0 0}
+.final .grp:first-child{margin-top:4px}
+#steps .step:first-child{padding-top:0;border-top:0}
+.ask p{margin-bottom:.5em}
+.guides{margin:20px 0 6px}
+.guides details{border-top:1px solid var(--line);border-bottom:0}
+.guides details:last-child{border-bottom:1px solid var(--line)}
+.guide summary{font-size:16px;font-weight:600;color:var(--ink);padding:12px 0;min-height:50px}
+.guide summary::before{content:"מדריך";font-size:13px;color:var(--deep);font-weight:600;flex:none}
+.guide .body{padding-bottom:18px}
+.guide .done-btn{display:block;margin:8px 0 0;background:transparent;border:0;border-bottom:1px solid var(--rose);color:var(--soft);font:14px Heebo,sans-serif;min-height:40px;padding:0 2px;cursor:pointer}
+</style>
+</head>
+<body>
+<header class="top">
+ <div class="wrap">
+  <div class="crumb">רעשי רקע · <span>01 / 05</span></div>
+  <div class="pulses" aria-label="פעימה 1 מתוך 5"><i></i><i></i><i></i><i></i><i></i></div>
+  <a class="count" id="count" href="#checklist" aria-live="polite" aria-label="מעבר לצ׳קליסט"></a>
+ </div>
+</header>
+
+<main class="wrap">
+
+<section class="hero">
+ <h1>מנקות את הוואטסאפ</h1>
+ <p class="sub">לא כל שיחה צריכה מקום בשורה הראשונה של החיים שלך.</p>
+ <ul class="meta"><li><bdi dir="ltr">20–21.11.2026</bdi></li><li>20 דקות, או <bdi dir="ltr">45–60</bdi> למי שרוצה</li></ul>
+ <p class="lead">כמה שיחות פתוחות יש לך בוואטסאפ כרגע?<br>וכמה מהן באמת צריכות להיות מול העיניים שלך?</p>
+ <p>קבוצות שנשארנו בהן מתוך נימוס, שיחות מלפני שנתיים, הודעות שכבר טופלו — והכול ממשיך לתפוס מקום במסך ולבקש תשומת לב.</p>
+ <p><b>היום אנחנו עושות סדר.</b></p>
+ <p>לא נעלמות מהעולם, לא מפסיקות לענות לאנשים ולא מוחקות דברים חשובים. פשוט מחליטות מה נשאר מול העיניים, מה עובר הצידה ומה כבר לא צריך להיות שם.</p>
+</section>
+
+<section>
+ <h2>בסוף הפעימה</h2>
+ <ul class="dots">
+  <li>במסך הראשי נשארות רק שיחות שדורשות ממך פעולה, מענה או מעקב.</li>
+  <li>קבוצות ושיחות שכבר לא רלוונטיות — יצאת מהן ומחקת, אחרי בדיקה.</li>
+  <li>מה שאת רוצה לבדוק רק ביוזמתך — בשיחות נעולות, מושתק לפי הצורך.</li>
+  <li>מה שסיימת לטפל בו — בארכיון, וחוזר אלייך כשמגיעה הודעה חדשה.</li>
+  <li>ב־<bdi>WhatsApp Business</bdi>: השיחות שבמסך הראשי מסודרות בתוויות.</li>
+ </ul>
+ <p class="quote">לא חייבים להיות זמינות לכל דבר כדי להיות בעניינים.</p>
+</section>
+
+<section>
+ <h2>כמה זמן זה לוקח?</h2>
+ <div class="tracks">
+  <div class="track"><b>מסלול קצר</b><span class="t">20 דקות</span><p>מספיק כדי להרגיש שינוי אמיתי. מתחילות בשיחות ובקבוצות שמייצרות הכי הרבה עומס.</p></div>
+  <div class="track"><b>מסלול יסודי</b><span class="t"><bdi dir="ltr">45–60</bdi> דקות</span><p>למי שרוצה לעבור על יותר שיחות וקבוצות, ולסדר תוויות עסקיות. לא חובה.</p></div>
+ </div>
+</section>
+
+<section id="method">
+ <h2>שלוש החלטות לכל שיחה</h2>
+ <p class="lead">המטרה: להשאיר במסך הראשי רק שיחות שדורשות כרגע את תשומת הלב שלי.</p>
+ <p>עוברות על השיחות והקבוצות, ומחליטות לאן כל אחת שייכת.</p>
+
+ <h3 class="dtitle">כלל האצבע של הפעימה</h3>
+ <ol class="rules">
+  <li><span class="rq">לא רלוונטי?</span><i class="arr" aria-hidden="true"></i><span class="to"><b>יוצאת ומוחקת</b></span></li>
+  <li><span class="rq">רוצה לבדוק רק כשאני מחליטה?</span><i class="arr" aria-hidden="true"></i><span class="to"><b>שיחות נעולות</b><span>עם השתקה לפי הצורך</span></span></li>
+  <li><span class="rq">סיימתי לטפל, אבל רוצה לראות הודעה חדשה?</span><i class="arr" aria-hidden="true"></i><span class="to"><b>ארכיון</b><span>עם חזרה למסך הראשי</span></span></li>
+  <li><span class="rq">עדיין דורש טיפול?</span><i class="arr" aria-hidden="true"></i><span class="to"><b>נשאר במסך הראשי</b></span></li>
+ </ol>
+</section>
+
+<section id="steps">
+ <article class="step">
+  <div class="n">החלטה 1</div>
+  <h3>לצאת ולמחוק</h3>
+  <p class="soft">מה שכבר לא רלוונטי לי.</p>
+  <p><b>קבוצות</b> שאין לי סיבה להישאר בהן — יוצאת מהן ומוחקת.<br><b>שיחות ישנות</b> שאין לי צורך בהן או במידע שבתוכן — מוחקת.</p>
+  <p class="note"><b>לפני מחיקה</b> בודקת שאין שם מידע, קבצים או תיעוד שארצה לשמור. אם יש ספק — לא מוחקים.</p>
+  <div class="guides">
+  <details class="guide" id="g-exit">
+  <summary>איך יוצאים מקבוצה ומוחקים אותה</summary>
+  <div class="body">
+   <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-t="e-ios">אייפון</button><button role="tab" aria-selected="false" data-t="e-and">אנדרואיד</button></div>
+   <div class="pane" id="e-ios" role="tabpanel"><h4>אייפון</h4>
+    <h3>יציאה ומחיקה של קבוצה</h3>
+    <ol class="how"><li>פותחים את הקבוצה ולוחצים על שם הקבוצה למעלה.</li><li>גוללים למטה ובוחרים ״יציאה מהקבוצה״ (<bdi>Exit group</bdi>), ומאשרים.</li><li>באותו מסך מופיעה עכשיו האפשרות ״מחיקת הקבוצה״ (<bdi>Delete group</bdi>) — בוחרים ומאשרים.</li></ol>
+    <h3>מחיקת שיחה</h3>
+    <ol class="how"><li>ברשימת השיחות מחליקים שמאלה על השיחה.</li><li>בוחרים ״עוד״ (<bdi>More</bdi>) ואז ״מחיקת הצ׳אט״ (<bdi>Delete chat</bdi>).</li></ol>
+   </div>
+   <div class="pane" id="e-and" role="tabpanel" hidden><h4>אנדרואיד</h4>
+    <h3>יציאה ומחיקה של קבוצה</h3>
+    <ol class="how"><li>פותחים את הקבוצה ולוחצים על שם הקבוצה למעלה.</li><li>גוללים למטה ובוחרים ״יציאה מהקבוצה״ (<bdi>Exit group</bdi>), ומאשרים.</li><li>באותו מסך מופיעה עכשיו האפשרות ״מחיקת הקבוצה״ (<bdi>Delete group</bdi>) — בוחרים ומאשרים.</li></ol>
+    <h3>מחיקת שיחה</h3>
+    <ol class="how"><li>ברשימת השיחות לוחצים לחיצה ארוכה על השיחה.</li><li>לוחצים על סמל הפח ומאשרים.</li></ol>
+   </div>
+   <p class="hl">כשיוצאים מקבוצה, מנהלי הקבוצה רואים שיצאת. מחיקה מוחקת את ההיסטוריה רק אצלך.</p>
+   <button type="button" class="done-btn noprint" data-close>סגירת המדריך</button>
+  </div>
+ </details>
+  </div>
+  <label class="chk"><input type="checkbox" data-k="exit"><span>יצאתי מקבוצות שכבר לא רלוונטיות ומחקתי אותן</span></label>
+  <label class="chk tight"><input type="checkbox" data-k="del"><span>מחקתי שיחות ישנות שאין לי בהן צורך, אחרי בדיקה</span></label>
+ </article>
+
+ <article class="step">
+  <div class="n">החלטה 2</div>
+  <h3>להעביר לשיחות נעולות</h3>
+  <p class="soft">מה שאני רוצה לבדוק רק ביוזמתי.</p>
+  <p>קבוצות ושיחות שלא מעניינות אותי בשוטף, אבל יש בהן מידע שאני רוצה שתהיה לי אפשרות לחפש או לבדוק מדי פעם.</p>
+  <p class="ex">למשל: קבוצה שאני נכנסת אליה רק כשאני מחפשת המלצה, מידע מסוים או עדכון בנושא שמעניין אותי.</p>
+  <p>אני לא צריכה לראות אותה במסך הראשי. אני יודעת שהיא שם, וכשארצה — אכנס לבדוק.</p>
+  <p class="note"><b>חשוב:</b> שיחות נעולות הן כלי פרטיות. הן לא מבטיחות שלא יגיעו התראות — רק בלי שם השולח ותוכן ההודעה. לכן בודקות גם את הגדרות ההשתקה.</p>
+  <div class="guides">
+  <details class="guide" id="g-lock">
+  <summary>איך נועלים שיחה ואיך מוצאים אותה אחר כך</summary>
+  <div class="body">
+   <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-t="l-ios">אייפון</button><button role="tab" aria-selected="false" data-t="l-and">אנדרואיד</button></div>
+   <div class="pane" id="l-ios" role="tabpanel"><h4>אייפון</h4>
+    <h3>נועלים</h3>
+    <ol class="how"><li>פותחים את השיחה או הקבוצה ולוחצים על השם למעלה.</li><li>בוחרים ״נעילת צ׳אט״ (<bdi>Chat lock</bdi>) ומפעילים.</li><li>מאשרים עם <bdi>Face ID</bdi>, טביעת אצבע או קוד הטלפון.</li></ol>
+   </div>
+   <div class="pane" id="l-and" role="tabpanel" hidden><h4>אנדרואיד</h4>
+    <h3>נועלים</h3>
+    <ol class="how"><li>ברשימת השיחות לוחצים לחיצה ארוכה על השיחה או הקבוצה.</li><li>פותחים את תפריט שלוש הנקודות ובוחרים ״נעילת צ׳אט״ (<bdi>Lock chat</bdi>).</li><li>מאשרים עם טביעת אצבע, זיהוי פנים או קוד הטלפון.</li></ol>
+   </div>
+   <h3>מוצאים אחר כך</h3>
+   <ol class="how"><li>ברשימת השיחות מושכים לאט את הרשימה כלפי מטה, מהחלק העליון.</li><li>מופיעה התיקייה ״צ׳אטים נעולים״ (<bdi>Locked chats</bdi>) — לוחצים עליה.</li><li>מאשרים את הזהות, והשיחות נפתחות.</li></ol>
+   <p class="note">יש גם אפשרות להסתיר את התיקייה לגמרי עם קוד סודי. לשיטה של הפעימה לא צריך אותה — עדיף שהתיקייה תישאר זמינה כשתרצי לבדוק.</p>
+   <button type="button" class="done-btn noprint" data-close>סגירת המדריך</button>
+  </div>
+ </details>
+
+  <details class="guide" id="g-mute">
+  <summary>איך משתיקים התראות של שיחה נעולה</summary>
+  <div class="body">
+   <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-t="m-ios">אייפון</button><button role="tab" aria-selected="false" data-t="m-and">אנדרואיד</button></div>
+   <div class="pane" id="m-ios" role="tabpanel"><h4>אייפון</h4>
+    <ol class="how"><li>פותחים את ״צ׳אטים נעולים״ ונכנסים לשיחה.</li><li>לוחצים על השם למעלה.</li><li>בוחרים ״השתק״ (<bdi>Mute</bdi>) — בחלק מהגרסאות זה נמצא תחת ״התראות״.</li><li>בוחרים משך: לשיחה שבודקים רק ביוזמה — ״תמיד״.</li></ol>
+   </div>
+   <div class="pane" id="m-and" role="tabpanel" hidden><h4>אנדרואיד</h4>
+    <ol class="how"><li>פותחים את ״צ׳אטים נעולים״ ונכנסים לשיחה.</li><li>לוחצים על השם בחלק העליון.</li><li>נכנסים ל״התראות״ ומפעילים השתקה.</li><li>בוחרים משך: לשיחה שבודקים רק ביוזמה — ״תמיד״.</li></ol>
+   </div>
+   <h3>מה חשוב לדעת</h3>
+   <ul class="dots"><li>השתקה לא חוסמת הודעות. הן ממשיכות להגיע, ואפשר להיכנס ולקרוא.</li><li>הצד השני לא מקבל הודעה שהשתקת.</li><li>לפעמים אזכור או תגובה להודעה שלך עדיין יקפיצו התראה.</li><li>גם הגדרות ההתראות של הטלפון עצמו משפיעות על מה שמוצג.</li></ul>
+   <button type="button" class="done-btn noprint" data-close>סגירת המדריך</button>
+  </div>
+ </details>
+  </div>
+  <label class="chk"><input type="checkbox" data-k="lock"><span>העברתי לשיחות נעולות את מה שאני רוצה לבדוק רק ביוזמתי</span></label>
+  <label class="chk tight"><input type="checkbox" data-k="mute"><span>השתקתי שיחות נעולות שעדיין שולחות לי התראות</span></label>
+ </article>
+
+ <article class="step">
+  <div class="n">החלטה 3</div>
+  <h3>להעביר לארכיון</h3>
+  <p class="soft">מה שסיימתי לטפל בו, אבל אני רוצה שיחזור אליי כשיש משהו חדש.</p>
+  <p>שיחות שכבר עניתי עליהן, טיפלתי בהן, או שאין לי מה לעשות איתן כרגע.</p>
+  <p>אני לא צריכה לראות אותן במסך הראשי כל הזמן, אבל אם תגיע הודעה חדשה — אני רוצה שהשיחה תחזור לתשומת הלב שלי.</p>
+  <div class="ask">
+   <p>לכן, בשיטה הזאת, נכנסות ל:</p>
+   <p class="path">הגדרות ← צ׳אטים ← השאר צ׳אטים בארכיון</p>
+   <p style="margin:0">ומוודאות שהאפשרות <b>כבויה</b>. כך, כשמגיעה הודעה חדשה לשיחה בארכיון, היא יכולה לחזור לרשימת השיחות הראשית.</p>
+  </div>
+  <div class="guides">
+  <details class="guide" id="g-arch">
+  <summary>איך מעבירים שיחה לארכיון</summary>
+  <div class="body">
+   <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-t="a-ios">אייפון</button><button role="tab" aria-selected="false" data-t="a-and">אנדרואיד</button></div>
+   <div class="pane" id="a-ios" role="tabpanel"><h4>אייפון</h4>
+    <h3>מעבירים לארכיון</h3>
+    <ol class="how"><li>ברשימת השיחות מחליקים שמאלה על השיחה.</li><li>בוחרים ״ארכיון״ (<bdi>Archive</bdi>).</li></ol>
+    <h3>מחזירים מהארכיון</h3>
+    <ol class="how"><li>נכנסים ל״ארכיון״ (<bdi>Archived</bdi>) ברשימת השיחות.</li><li>מחליקים שמאלה על השיחה ובוחרים ביטול ארכוב.</li></ol>
+   </div>
+   <div class="pane" id="a-and" role="tabpanel" hidden><h4>אנדרואיד</h4>
+    <h3>מעבירים לארכיון</h3>
+    <ol class="how"><li>ברשימת השיחות לוחצים לחיצה ארוכה על השיחה.</li><li>לוחצים על סמל הארכיון — קופסה עם חץ כלפי מטה.</li></ol>
+    <h3>מחזירים מהארכיון</h3>
+    <ol class="how"><li>נכנסים ל״ארכיון״ (<bdi>Archived</bdi>) ברשימת השיחות.</li><li>לחיצה ארוכה על השיחה ובוחרים בסמל ביטול הארכוב.</li></ol>
+   </div>
+   <button type="button" class="done-btn noprint" data-close>סגירת המדריך</button>
+  </div>
+ </details>
+
+  <details class="guide" id="g-set">
+  <summary>איך מגדירים ששיחה בארכיון תחזור למסך הראשי עם הודעה חדשה</summary>
+  <div class="body">
+   <ol class="how"><li>נכנסים ל״הגדרות״ בוואטסאפ.</li><li>בוחרים ״צ׳אטים״ (<bdi>Chats</bdi>).</li><li>מכבים את ״השאר צ׳אטים בארכיון״ (<bdi>Keep chats archived</bdi>).</li></ol>
+   <p><b>כשההגדרה כבויה:</b> הודעה חדשה מחזירה את השיחה מהארכיון לרשימה הראשית. זה מה שאנחנו רוצות בשיטה הזאת.</p>
+   <p><b>כשההגדרה מופעלת:</b> שיחות נשארות בארכיון גם אחרי הודעה חדשה, ולרוב בלי התראות רגילות.</p>
+   <p class="hl">ההגדרה חלה על כל הארכיון. אם יש בארכיון שיחות שאת רוצה שיישארו שקטות — העבירי אותן קודם לשיחות נעולות והשתיקי.</p>
+   <button type="button" class="done-btn noprint" data-close>סגירת המדריך</button>
+  </div>
+ </details>
+  </div>
+  <label class="chk"><input type="checkbox" data-k="arch"><span>העברתי לארכיון שיחות שסיימתי לטפל בהן</span></label>
+  <label class="chk tight"><input type="checkbox" data-k="set"><span>כיביתי את ״השאר צ׳אטים בארכיון״</span></label>
+ </article>
+
+ <article class="step">
+  <div class="n">ומה נשאר במסך הראשי?</div>
+  <h3>רק מה שעדיין דורש ממני משהו</h3>
+  <p>שיחות שעדיין דורשות ממני פעולה, מענה או מעקב פעיל.</p>
+  <label class="chk"><input type="checkbox" data-k="main"><span>במסך הראשי נשארו רק שיחות שדורשות פעולה, מענה או מעקב</span></label>
+  <div class="biz">
+   <p class="n" style="margin:0 0 6px">למשתמשות <bdi>WhatsApp Business</bdi></p>
+   <p>כדי למצוא בקלות את השיחות שבמסך הראשי, אפשר לסמן אותן בתוויות או בכלי הארגון שזמינים בגרסה שלך:</p>
+   <ul class="tags"><li>לקוחה חדשה</li><li>ממתינה לתשובה</li><li>בטיפול</li><li>הושלם</li><li>מעקב בהמשך</li></ul>
+   <p class="note" style="margin-top:4px">עדיף שלוש תוויות שבאמת עובדים איתן מאשר עשר שנראות יפה.</p>
+   <label class="chk tight"><input type="checkbox" data-k="biz"><span>ארגנתי שיחות עסקיות באמצעות תוויות (לא חובה)</span></label>
+  </div>
+ </article>
+</section>
+
+<section>
+ <h2>שאלות נפוצות</h2>
+ <div id="faq"></div>
+</section>
+
+<section id="checklist">
+ <h2>פעימה 01 | הצ׳קליסט שלי</h2>
+ <div class="bar noprint"><i id="bar"></i></div>
+ <div class="final">
+  <p class="grp">לצאת ולמחוק</p>
+  <label class="chk"><input type="checkbox" data-k="exit"><span>יצאתי מקבוצות שכבר לא רלוונטיות ומחקתי אותן.</span></label>
+  <label class="chk"><input type="checkbox" data-k="del"><span>מחקתי שיחות ישנות שאין לי בהן צורך, אחרי בדיקה.</span></label>
+  <p class="grp">שיחות נעולות</p>
+  <label class="chk"><input type="checkbox" data-k="lock"><span>העברתי לשיחות נעולות את מה שאני רוצה לבדוק רק ביוזמתי.</span></label>
+  <label class="chk"><input type="checkbox" data-k="mute"><span>השתקתי שיחות נעולות שעדיין שולחות לי התראות.</span></label>
+  <p class="grp">ארכיון</p>
+  <label class="chk"><input type="checkbox" data-k="arch"><span>העברתי לארכיון שיחות שסיימתי לטפל בהן.</span></label>
+  <label class="chk"><input type="checkbox" data-k="set"><span>כיביתי את ״השאר צ׳אטים בארכיון״.</span></label>
+  <p class="grp">המסך הראשי</p>
+  <label class="chk"><input type="checkbox" data-k="main"><span>במסך הראשי נשארו רק שיחות שדורשות פעולה, מענה או מעקב.</span></label>
+  <label class="chk"><input type="checkbox" data-k="biz"><span>אם יש לי <bdi>WhatsApp Business</bdi> — ארגנתי שיחות באמצעות תוויות.</span></label>
+ </div>
+ <div class="done">
+  <p><b>סיימת?</b></p>
+  <p>פתחי שוב את מסך השיחות שלך. זה נראה קצת יותר כמו מקום שאת מנהלת, ופחות כמו מקום שמנהל אותך?</p>
+  <p>זה בדיוק הרעיון.</p>
+ </div>
+</section>
+
+<section>
+ <h2>רגע של מחשבה</h2>
+ <label class="q" for="r1">איזו שיחה או קבוצה תפסה לי הכי הרבה תשומת לב, בלי שבאמת הייתי צריכה אותה?</label>
+ <textarea id="r1" data-r></textarea>
+ <label class="q" for="r2">איזה שינוי אחד אני רוצה לשמור גם אחרי האתגר?</label>
+ <textarea id="r2" data-r></textarea>
+ <p class="small noprint">לא חובה. מה שכתבת נשמר רק בדפדפן שלך ולא נשלח לשום מקום.</p>
+</section>
+
+<section style="border:0">
+ <div class="share">
+  <h3>קצת פחות רעש. כבר מרגישים את ההבדל?</h3>
+  <p>אם סיימת, מוזמנת לשתף בקבוצה מה היה הדבר הראשון שהעפת ממסך הוואטסאפ שלך. לא חייבים צילום מסך — גם משפט אחד מספיק.</p>
+  <a class="btn" href="https://chat.whatsapp.com/ETWvSEqu0lyBO2JsaCfOIj?s=cl&amp;p=i&amp;mlu=4&amp;ilr=4&amp;iam=2" target="_blank" rel="noopener">פתיחת קבוצת האתגר</a>
+  <p class="small">הקישור פותח את הקבוצה. את ההודעה כותבים שם בעצמך.</p>
+  <a class="sec" href="https://dina-ro.github.io/raashei-reka/" target="_blank" rel="noopener">לכל פרטי האתגר</a>
+ </div>
+</section>
+
+<section>
+ <h2>צריכה עזרה טכנית?</h2>
+ <p class="small">שמות הכפתורים במדריכים עשויים להשתנות מעט בין גרסאות, שפות ומכשירים. המדריכים הרשמיים של מרכז העזרה של WhatsApp:</p>
+ <ul class="help">
+  <li><a href="https://faq.whatsapp.com/1426887324388733/" target="_blank" rel="noopener">ארכוב וביטול ארכוב<span class="u">faq.whatsapp.com/1426887324388733</span></a></li>
+  <li><a href="https://faq.whatsapp.com/764072925284841/" target="_blank" rel="noopener">נעילת צ׳אטים<span class="u">faq.whatsapp.com/764072925284841</span></a></li>
+  <li><a href="https://faq.whatsapp.com/694350718331007/" target="_blank" rel="noopener">השתקת התראות<span class="u">faq.whatsapp.com/694350718331007</span></a></li>
+  <li><a href="https://faq.whatsapp.com/797069521522888/" target="_blank" rel="noopener">ניהול התראות<span class="u">faq.whatsapp.com/797069521522888</span></a></li>
+ </ul>
+</section>
+
+<section class="book" style="border:0">
+ <h2>להמשיך עם היומן</h2>
+ <p class="t">רעשי רקע</p>
+ <p class="small">יומן כתיבה מודפס שמלווה את האתגר — או עומד בפני עצמו.</p>
+ <ul class="buy">
+  <li><a href="https://www.amazon.es/s?k=9798141078620" target="_blank" rel="noopener">להזמנה מאירופה</a></li>
+  <li><a href="https://www.amazon.com/dp/B0HR1DB1BD" target="_blank" rel="noopener">להזמנה מישראל</a></li>
+ </ul>
+</section>
+
+<p class="margin">פחות רעש. יותר מקום.</p>
+</main>
+
+<footer>
+ <b>PINK MONEY CLUB</b>רעשי רקע · פעימה 01 מתוך 05
+ <div><button class="pdf" id="pdf" type="button">שמירה כ־PDF</button>
+ <p class="pdfhint" id="pdfhint">אם לא נפתח חלון הדפסה: תפריט הדפדפן ← שיתוף / הדפסה ← שמירה כ־PDF.</p></div>
+</footer>
+
+<script>
+{
+const faq=[
+ ["מה ההבדל בין מחיקה, שיחה נעולה וארכיון?","מחיקה מסירה את השיחה מההיסטוריה שלך. שיחה נעולה עוברת לתיקייה מוגנת שנכנסים אליה רק ביוזמה. ארכיון מוציא שיחה מהמסך הראשי — ובשיטה שלנו, היא חוזרת כשמגיעה הודעה חדשה."],
+ ["איך אדע לאן שייכת כל שיחה?","לפי כלל האצבע: לא רלוונטי — יוצאת ומוחקת. רוצה לבדוק רק כשאני מחליטה — שיחות נעולות. סיימתי לטפל אבל רוצה לראות הודעה חדשה — ארכיון. עדיין דורש טיפול — נשאר במסך הראשי."],
+ ["למה לכבות את ״השאר צ׳אטים בארכיון״?","כי הארכיון בשיטה הזאת מיועד לשיחות שסיימת לטפל בהן אבל רוצה לדעת כשמשהו חדש קורה בהן. כשההגדרה כבויה, הודעה חדשה מחזירה את השיחה למסך הראשי."],
+ ["יש לי בארכיון שיחות שאני רוצה שיישארו שקטות. מה עושים?","לפני שמכבות את ההגדרה, מעבירות אותן לשיחות נעולות ומשתיקות. ההגדרה חלה על כל הארכיון, אז שיחות שקטות שייכות לשיחות הנעולות."],
+ ["שיחה נעולה עדיין שולחת התראות?","היא עשויה לשלוח, בלי שם השולח ובלי תוכן ההודעה. לכן שיחה שבודקים רק ביוזמה — גם משתיקים."],
+ ["איפה אני מוצאת את השיחות הנעולות?","מושכים לאט את רשימת השיחות כלפי מטה מהחלק העליון, ונכנסים לתיקייה ״צ׳אטים נעולים״."],
+ ["אם השתקתי שיחה, עדיין אוכל לקרוא?","כן. ההודעות ממשיכות להגיע. השתקה משנה רק את ההתראה."],
+ ["אנשים יודעים מה עשיתי?","נעילה, השתקה וארכוב לא שולחים לאף אחד הודעה. כשיוצאים מקבוצה, מנהלי הקבוצה רואים שיצאת."],
+ ["מה עושים עם קבוצות משפחה שלא רוצים לעזוב?","לא חייבים לעזוב. אם הקבוצה דורשת ממך מעקב — היא נשארת במסך הראשי. אם את רוצה להציץ בה רק כשמתאים לך — שיחות נעולות, עם השתקה."],
+ ["אני משתמשת בוואטסאפ לעבודה. מה עובר לארכיון?","רק שיחות שסיימת לטפל בהן. שיחות שמחכות לתשובה או לטיפול נשארות במסך הראשי, ואפשר לסדר אותן בתוויות."],
+ ["מה אם יש לי אלפי שיחות?","לא צריך לעבור על כולן היום. מתחילות בשיחות ובקבוצות הבולטות והעמוסות ביותר, ומקדישות למשימה 20 דקות."],
+ ["מחקתי שיחה בטעות. אפשר להחזיר?","לא תמיד. לפעמים אפשר לשחזר מגיבוי מתאים, אבל זה לא מובטח ועלול לעלות באובדן הודעות חדשות יותר. לכן בודקות לפני שמוחקות."],
+ ["מה אם אני לא רוצה למחוק שום דבר?","זה בסדר. אפשר להתחיל בשיחות נעולות ובארכיון. המטרה היא להוריד עומס, לא להוכיח כמה מחקת."]
+];
+document.getElementById('faq').innerHTML=faq.map(([q,a])=>`<details><summary>${q}</summary><div class="body"><p style="margin:0">${a}</p></div></details>`).join('');
+
+const KEY='rr-pulse01-v2';
+let st={c:{},r:{}};
+try{st=Object.assign(st,JSON.parse(localStorage.getItem(KEY))||{})}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const boxes=[...document.querySelectorAll('input[data-k]')];
+const keys=[...new Set(boxes.map(b=>b.dataset.k))];
+const render=()=>{
+ boxes.forEach(b=>b.checked=!!st.c[b.dataset.k]);
+ const n=keys.filter(k=>st.c[k]).length;
+ document.getElementById('count').textContent='סימנתי '+n+' מתוך '+keys.length;
+ document.getElementById('bar').style.width=(n/keys.length*100)+'%';
+};
+boxes.forEach(b=>b.addEventListener('change',()=>{st.c[b.dataset.k]=b.checked;save();render()}));
+render();
+
+document.querySelectorAll('textarea[data-r]').forEach(t=>{
+ t.value=st.r[t.id]||'';
+ t.addEventListener('input',()=>{st.r[t.id]=t.value;save()});
+});
+
+document.querySelectorAll('.tabs').forEach(tl=>{
+ const btns=[...tl.querySelectorAll('button')];
+ btns.forEach(b=>b.addEventListener('click',()=>{
+  btns.forEach(x=>{const on=x===b;x.setAttribute('aria-selected',on);document.getElementById(x.dataset.t).hidden=!on});
+ }));
+});
+
+
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>{const d=b.closest('details');d.open=false;d.querySelector('summary').scrollIntoView({block:'nearest'})}));
+
+let wasClosed=[];
+addEventListener('beforeprint',()=>{wasClosed=[...document.querySelectorAll('details:not([open])')];wasClosed.forEach(d=>d.open=true)});
+addEventListener('afterprint',()=>{wasClosed.forEach(d=>d.open=false);wasClosed=[]});
+
+document.getElementById('pdf').addEventListener('click',()=>{
+ document.getElementById('pdfhint').classList.add('on');
+ try{window.print()}catch(e){}
+});
+}
+</script>
+</body>
+</html>
