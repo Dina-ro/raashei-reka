@@ -224,6 +224,10 @@ code{font-size:15px;background:#FFFDFA;border:1px solid var(--line);padding:1px 
 .pick .pb{display:flex;gap:6px;flex:none}
 .pick .empty{border:0;color:var(--soft)}
 @media print{.tryit{break-inside:avoid}.pick button{display:none}.covers img{width:90px}}
+.teaser{display:flex;gap:12px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin:-12px 0 30px;color:var(--ink);text-decoration:none;font-size:15px;min-height:48px}
+.teaser b{flex:none;color:var(--deep);font-size:13px;font-weight:600}
+.teaser i{font-style:normal;color:var(--deep);margin-inline-start:auto;flex:none}
+@media print{.teaser{display:none}}
 </style>
 </head>
 <body>
@@ -236,11 +240,11 @@ code{font-size:15px;background:#FFFDFA;border:1px solid var(--line);padding:1px 
 </header>
 
 <main class="wrap">
-
 <section class="hero">
  <h1>מנקות את המייל</h1>
  <p class="sub">לא כל מי שיש לו את כתובת המייל שלך צריך לקבל מקום בתיבת הדואר שלך.</p>
  <ul class="meta"><li><bdi dir="ltr">24–25.11.2026</bdi></li><li>20 דקות, או <bdi dir="ltr">45–60</bdi> למי שרוצה</li></ul>
+ <a class="teaser" href="#journal"><b>מתוך היומן</b><span>בסוף המשימה מחכה תרגיל אמיתי מתוך היומן, לנסות כאן במקום.</span><i aria-hidden="true">↓</i></a>
  <p class="lead">יש מיילים שאנחנו מחכות להם.<br>ויש כאלה שמגיעים כל שבוע, למרות שכבר מזמן הפסקנו להתעניין במה שיש להם להגיד.</p>
  <p>מבצעים, עדכונים, ניוזלטרים, הודעות אוטומטיות — כל אחד מהם קטן, וביחד הם מסתירים את מה שבאמת חשוב.</p>
  <p><b>היום אנחנו עושות שני דברים:</b> מפסיקות להזמין מיילים שאנחנו לא רוצות לקבל, ומנקות את מה שכבר הצטבר.</p>
@@ -500,11 +504,6 @@ code{font-size:15px;background:#FFFDFA;border:1px solid var(--line);padding:1px 
  </article>
 </section>
 
-<section>
- <h2>שאלות נפוצות</h2>
- <div id="faq"></div>
-</section>
-
 <section id="checklist">
  <h2>פעימה 03 | הצ׳קליסט שלי</h2>
  <div class="bar noprint"><i id="bar"></i></div>
@@ -526,35 +525,6 @@ code{font-size:15px;background:#FFFDFA;border:1px solid var(--line);padding:1px 
  <label class="q" for="r2">מה יעזור לי לשמור על תיבת מייל נעימה יותר גם בהמשך?</label>
  <textarea id="r2" data-r></textarea>
  <p class="small noprint">לא חובה.<br>מה שכתבת נשמר רק בדפדפן שלך ולא נשלח לשום מקום.</p>
-</section>
-
-<section>
- <div class="done">
-  <h3 class="end">קצת פחות דואר.<br>קצת יותר מקום.</h3>
-  <p>לא צריך לנקות שנים של מיילים ביום אחד.</p>
-  <p>אם עצרת כמה דיוורים מיותרים, מחקת מה שכבר לא צריך והצלחת לראות קצת יותר טוב את מה שחשוב — עשית את המשימה.</p>
- </div>
-</section>
-
-<section style="border:0">
- <div class="share">
-  <h3>סיימת?<br>ספרי לנו.</h3>
-  <p>איזה סוג מיילים הפסקת לקבל היום?<br>או, אם בא לך לשתף במספר — מכמה רשימות דיוור הסרת את עצמך?</p>
-  <p class="small">לא צריך צילומי מסך, כתובות מייל או מידע אישי.</p>
-  <a class="btn" href="https://chat.whatsapp.com/ETWvSEqu0lyBO2JsaCfOIj?s=cl&amp;p=i&amp;mlu=4&amp;ilr=4&amp;iam=2" target="_blank" rel="noopener">חזרה לקבוצת האתגר</a>
-  <p class="small">הקישור פותח את הקבוצה.<br>את ההודעה כותבים שם בעצמך.</p>
-  <a class="sec" href="https://dina-ro.github.io/raashei-reka/" target="_blank" rel="noopener">חזרה לעמוד האתגר</a>
- </div>
-</section>
-
-<section>
- <h2>צריכה עזרה טכנית?</h2>
- <p class="small">שמות הכפתורים במדריכים עשויים להשתנות בין גרסאות, שפות ומכשירים.<br>מרכזי העזרה הרשמיים:</p>
- <ul class="help">
-  <li><a href="https://support.google.com/mail/" target="_blank" rel="noopener">מרכז העזרה של Gmail<span class="u">support.google.com/mail</span></a></li>
-  <li><a href="https://support.microsoft.com/outlook" target="_blank" rel="noopener">מרכז העזרה של Outlook<span class="u">support.microsoft.com/outlook</span></a></li>
-  <li><a href="https://support.apple.com/mail" target="_blank" rel="noopener">מרכז העזרה של Apple Mail<span class="u">support.apple.com/mail</span></a></li>
- </ul>
 </section>
 
 <section class="book2" id="journal">
@@ -604,6 +574,40 @@ code{font-size:15px;background:#FFFDFA;border:1px solid var(--line);padding:1px 
  </div>
  <p class="small">מחיר: <bdi dir="ltr">14.99</bdi> אירו או דולר.<br>בישראל מזמינים דרך אמזון ארה״ב, ודמי המשלוח מתווספים למחיר.</p>
  <p class="bwink">את התיבה ניקית.<br>הדף מחכה.</p>
+</section>
+
+<section>
+ <div class="done">
+  <h3 class="end">קצת פחות דואר.<br>קצת יותר מקום.</h3>
+  <p>לא צריך לנקות שנים של מיילים ביום אחד.</p>
+  <p>אם עצרת כמה דיוורים מיותרים, מחקת מה שכבר לא צריך והצלחת לראות קצת יותר טוב את מה שחשוב — עשית את המשימה.</p>
+ </div>
+</section>
+
+<section style="border:0">
+ <div class="share">
+  <h3>סיימת?<br>ספרי לנו.</h3>
+  <p>איזה סוג מיילים הפסקת לקבל היום?<br>או, אם בא לך לשתף במספר — מכמה רשימות דיוור הסרת את עצמך?</p>
+  <p class="small">לא צריך צילומי מסך, כתובות מייל או מידע אישי.</p>
+  <a class="btn" href="https://chat.whatsapp.com/ETWvSEqu0lyBO2JsaCfOIj?s=cl&amp;p=i&amp;mlu=4&amp;ilr=4&amp;iam=2" target="_blank" rel="noopener">חזרה לקבוצת האתגר</a>
+  <p class="small">הקישור פותח את הקבוצה.<br>את ההודעה כותבים שם בעצמך.</p>
+  <a class="sec" href="https://dina-ro.github.io/raashei-reka/" target="_blank" rel="noopener">חזרה לעמוד האתגר</a>
+ </div>
+</section>
+
+<section>
+ <h2>שאלות נפוצות</h2>
+ <div id="faq"></div>
+</section>
+
+<section>
+ <h2>צריכה עזרה טכנית?</h2>
+ <p class="small">שמות הכפתורים במדריכים עשויים להשתנות בין גרסאות, שפות ומכשירים.<br>מרכזי העזרה הרשמיים:</p>
+ <ul class="help">
+  <li><a href="https://support.google.com/mail/" target="_blank" rel="noopener">מרכז העזרה של Gmail<span class="u">support.google.com/mail</span></a></li>
+  <li><a href="https://support.microsoft.com/outlook" target="_blank" rel="noopener">מרכז העזרה של Outlook<span class="u">support.microsoft.com/outlook</span></a></li>
+  <li><a href="https://support.apple.com/mail" target="_blank" rel="noopener">מרכז העזרה של Apple Mail<span class="u">support.apple.com/mail</span></a></li>
+ </ul>
 </section>
 
 <p class="margin">לא כל הודעה שנשלחה אלייך מחייבת את תשומת הלב שלך.</p>
