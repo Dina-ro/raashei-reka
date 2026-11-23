@@ -243,6 +243,10 @@ code{font-size:15px;background:#FFFDFA;border:1px solid var(--line);padding:1px 
 .picks3{display:grid;gap:4px;margin:14px 0 6px}.picks3 label{display:flex;flex-direction:column;margin-top:12px}.picks3 label .small{font-weight:400}
 .areas li{grid-template-columns:90px minmax(0,1fr)}
 @media print{.matrix{break-inside:avoid}.mx-row span{transform:rotate(180deg)}}
+.teaser{display:flex;gap:12px;align-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin:-12px 0 30px;color:var(--ink);text-decoration:none;font-size:15px;min-height:48px}
+.teaser b{flex:none;color:var(--deep);font-size:13px;font-weight:600}
+.teaser i{font-style:normal;color:var(--deep);margin-inline-start:auto;flex:none}
+@media print{.teaser{display:none}}
 </style>
 </head>
 <body>
@@ -255,11 +259,11 @@ code{font-size:15px;background:#FFFDFA;border:1px solid var(--line);padding:1px 
 </header>
 
 <main class="wrap">
-
 <section class="hero">
  <h1>מוציאות הכול מהראש</h1>
  <p class="sub">הראש שלך לא מחסן.<br>תני לדף להחזיק חלק.</p>
  <ul class="meta"><li><bdi dir="ltr">26–27.11.2026</bdi></li><li>20 דקות, או <bdi dir="ltr">45–60</bdi> למי שרוצה</li></ul>
+ <a class="teaser" href="#journal"><b>מתוך היומן</b><span>בסוף המשימה מחכה תרגיל מתוך היומן, שעובד עם אותן רצועות.</span><i aria-hidden="true">↓</i></a>
  <p class="lead">לקבוע תור.<br>לענות להודעה.<br>לשלוח הצעת מחיר.<br>לקנות משהו שנגמר.<br>לסיים את הדבר הזה שכבר שבועיים מחכה.</p>
  <p>ויש גם את המשימה ההיא שאנחנו נזכרות בה דווקא כשאנחנו מנסות להירדם.</p>
  <p>לפעמים העומס הוא לא רק כמות הדברים שיש לנו לעשות, אלא המאמץ לזכור את כולם.</p>
@@ -477,11 +481,6 @@ code{font-size:15px;background:#FFFDFA;border:1px solid var(--line);padding:1px 
  </article>
 </section>
 
-<section>
- <h2>שאלות נפוצות</h2>
- <div id="faq"></div>
-</section>
-
 <section id="checklist">
  <h2>פעימה 04 | הצ׳קליסט שלי</h2>
  <div class="bar noprint"><i id="bar"></i></div>
@@ -566,6 +565,11 @@ code{font-size:15px;background:#FFFDFA;border:1px solid var(--line);padding:1px 
   <p class="small">הקישור פותח את הקבוצה.<br>את ההודעה כותבים שם בעצמך.</p>
   <a class="sec" href="https://dina-ro.github.io/raashei-reka/" target="_blank" rel="noopener">חזרה לעמוד האתגר</a>
  </div>
+</section>
+
+<section>
+ <h2>שאלות נפוצות</h2>
+ <div id="faq"></div>
 </section>
 
 <p class="margin">הראש שלך לא מחסן.<br>תני לדף להחזיק חלק.</p>
